@@ -1,0 +1,57 @@
+/* src/components/EditProfile.css */
+
+.edit-profile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.edit-profile-content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    width: 80%;
+    max-width: 500px;
+}
+
+.edit-profile-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.edit-profile-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile-content input {
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.edit-profile-content button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.edit-profile-content button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}

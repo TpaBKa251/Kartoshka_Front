@@ -1,0 +1,77 @@
+/* src/components/Transfer.css */
+
+.transfer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 500px;
+    margin: 40px auto;
+    color: #333;
+}
+
+.transfer-menu {
+    text-align: center;
+}
+
+.transfer-menu h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.transfer-menu button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.transfer-menu button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.transfer-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transfer-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.transfer-form input {
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+}
+
+.transfer-form button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.transfer-form button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}

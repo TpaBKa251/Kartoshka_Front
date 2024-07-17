@@ -1,0 +1,75 @@
+.invoices-container {
+    padding: 20px;
+}
+
+.invoices-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.invoice-card {
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 700px;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.invoice-card p {
+    margin: 5px 0;
+    color: black;
+}
+
+.invoice-card .cancel-button {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-right: 10px;
+}
+
+.invoice-card .cancel-button:hover {
+    background: #ff7875;
+}
+
+.invoice-card .pay-button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.invoice-card .pay-button:hover {
+    background: #66bb6a;
+}
+
+.debt-button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.debt-button:hover {
+    background: #66bb6a;
+}
+
+.total-debt {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}

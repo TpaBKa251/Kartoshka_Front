@@ -1,0 +1,33 @@
+/* src/components/Balance.css */
+
+.balance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 500px;
+    margin: 40px auto;
+    color: #333;
+}
+
+.balance-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.balance-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.balance-container p strong {
+    font-weight: bold;
+}

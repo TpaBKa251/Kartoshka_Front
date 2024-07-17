@@ -1,0 +1,89 @@
+.home-container {
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: white;
+}
+
+.cta-button {
+    background: rgba(255, 255, 255, 1); /* Light blue gradient with three shades */
+    color: #000000;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: #ffffff; /* Reversed gradient */
+}
+
+.features {
+    margin-top: 40px;
+}
+
+.features h2 {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.feature-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature-cards h3{
+    color: black;
+}
+
+.feature-card{
+    box-shadow: rgba(255, 255, 255, 0.18) 0px 10px 50px;
+}
+
+.feature-cards p{
+    color: black;
+}
+
+.feature-card {
+    background: rgb(255, 255, 255); /* Light with glass effect */
+    backdrop-filter: blur(1000px);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.action-button {
+    background: rgba(255, 255, 255); /* Light blue gradient with three shades */
+    color: #1e3a8a;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.action-description {
+    color: white;
+    font-size: 1rem;
+}

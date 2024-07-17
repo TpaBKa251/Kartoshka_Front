@@ -1,0 +1,42 @@
+/* src/components/Profile.css */
+
+.profile-container {
+    padding: 20px;
+    background: rgba(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    margin: 100px auto;
+    max-width: 700px;
+    color: #333;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.profile-info button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.profile-info button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
