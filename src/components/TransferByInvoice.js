@@ -15,8 +15,6 @@ const TransferByInvoice = () => {
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);
         }
-
-        window.location.reload();
     };
 
     return (

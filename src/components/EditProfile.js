@@ -29,8 +29,6 @@ const EditProfile = ({ onClose, profileData }) => {
         } catch (error) {
             console.error('Error updating profile:', error.response ? error.response.data : error.message);
         }
-
-        window.location.reload();
     };
 
     return (

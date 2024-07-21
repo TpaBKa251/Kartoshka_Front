@@ -1,5 +1,3 @@
-// src/App.js
-
 import React from 'react';
 import './App.css';
 import Registration from './components/Registration';
@@ -11,35 +9,15 @@ import Profile from './components/Profile';
 import Balance from './components/Balance';
 import TransactionHistory from './components/TransactionHistory';
 import Invoices from './components/Invoices';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import CreateInvoice from "./components/CreateInvoice";
+import CreateInvoice from './components/CreateInvoice';
+import Header from './components/Header';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
       <Router>
         <div className="App">
-          <header className="App-header">
-            <nav className="App-nav">
-              <div className="logo">Картошка</div>
-              <div className="nav-links">
-                <Link to="/">Для покупок</Link>
-                <Link to="/">Для бизнеса</Link>
-              </div>
-              <div className="auth-links">
-                {!localStorage.getItem('sessionToken') ? (
-                    <>
-                      <Link to="/register">Регистрация</Link>
-                      <Link to="/login">Войти</Link>
-                    </>
-                ) : (
-                    <>
-                      <Link to="/profile">Профиль</Link>
-                      <Link to="/logout">Выйти</Link>
-                    </>
-                )}
-              </div>
-            </nav>
-          </header>
+          <Header />
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -51,7 +29,7 @@ function App() {
               <Route path="/balance" element={<Balance />} />
               <Route path="/transactions" element={<TransactionHistory />} />
               <Route path="/create-invoice" element={<CreateInvoice />} />
-              <Route path="/invoices" element={<Invoices />} /> {/* Add this line */}
+              <Route path="/invoices" element={<Invoices />} />
             </Routes>
           </main>
         </div>
@@ -60,7 +38,3 @@ function App() {
 }
 
 export default App;
-
-
-
-

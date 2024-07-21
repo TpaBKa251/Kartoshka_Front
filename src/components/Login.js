@@ -43,29 +43,27 @@ const Login = () => {
         } catch (error) {
             setError(error.response ? error.response.data : 'Login failed');
         }
-
-        window.location.reload();
     };
 
     return (
         <div className="login-container">
             <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h2>Вход</h2>
                 <input
                     type="text"
-                    placeholder="Email or Phone"
+                    placeholder="Email или номер телефона"
                     value={identifier}
                     onChange={(e) => setIdentifier(e.target.value)}
                     required
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Login</button>
+                <button type="submit">Войти</button>
                 {error && <p className="error">{error}</p>}
             </form>
         </div>

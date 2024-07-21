@@ -1,0 +1,42 @@
+.header-hero {
+    background: rgba(87, 174, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.header-hero .App-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-hero .logo {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.header-hero .logo .logo-image {
+    width: 100px; /* Размер логотипа */
+    margin-right: 10px;
+}
+
+.header-hero .nav-links,
+.header-hero .auth-links {
+    display: flex;
+    gap: 20px;
+}
+
+.header-hero a {
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}

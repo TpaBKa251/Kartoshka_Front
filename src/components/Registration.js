@@ -27,21 +27,18 @@ const Registration = () => {
             console.log('Registration successful:', response.data);
             // Redirect or show a success message
         } catch (error) {
-            console.error('Registration failed:', error.response ? error.response.data : error.message);
-            setError('Registration failed. Please check your details and try again.');
+            setError(error.response ? error.response.data : 'Регистраци провалена');
         }
-
-        window.location.reload();
     };
 
     return (
         <div className="registration-container">
             <form onSubmit={handleSubmit}>
-                <h2>Register</h2>
+                <h2>Регистрация</h2>
                 <input
                     type="text"
                     name="firstName"
-                    placeholder="First Name"
+                    placeholder="Имя"
                     value={formData.firstName}
                     onChange={handleChange}
                     required
@@ -49,7 +46,7 @@ const Registration = () => {
                 <input
                     type="text"
                     name="lastName"
-                    placeholder="Last Name"
+                    placeholder="Фамилия"
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -57,7 +54,7 @@ const Registration = () => {
                 <input
                     type="text"
                     name="middleName"
-                    placeholder="Middle Name"
+                    placeholder="Отчество (если есть)"
                     value={formData.middleName}
                     onChange={handleChange}
                     required
@@ -65,7 +62,7 @@ const Registration = () => {
                 <input
                     type="text"
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Номер телефона"
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -81,7 +78,7 @@ const Registration = () => {
                 <input
                     type="date"
                     name="birthDate"
-                    placeholder="Birth Date"
+                    placeholder="Дата рождения"
                     value={formData.birthDate}
                     onChange={handleChange}
                     required
@@ -89,12 +86,12 @@ const Registration = () => {
                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     value={formData.password}
                     onChange={handleChange}
                     required
                 />
-                <button type="submit">Register</button>
+                <button type="submit">Зарегистрироваться</button>
                 {error && <p className="error">{error}</p>}
             </form>
         </div>

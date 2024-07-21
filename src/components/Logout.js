@@ -19,7 +19,6 @@ const Logout = () => {
 
                 // Redirect to the login page
                 navigate('/login');
-                window.location.reload();
             } catch (error) {
                 console.error('Logout failed:', error.response ? error.response.data : error.message);
             }
