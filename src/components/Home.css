@@ -125,18 +125,115 @@
     color: black;
 }
 
+
+/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
+
+/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
+
+/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
+
+.balance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    position: absolute;
+    top: 20px;
+    left: 310px;
+}
+
+.balance-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.balance-container p {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.balance-button, .wallet-button, .view-all-button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.balance-button:hover, .wallet-button:hover, .view-all-button:hover {
+    background-color: #3700b3;
+}
+
 .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.transaction-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    position: absolute;
+    top: 360px;
+    left: 200px;
+}
+
+.transaction-history-container {
+
+}
+
+.transaction-history h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
     text-align: center;
 }
 
-.actions h2 {
-    font-size: 4rem;
-    color: white;
-    margin-bottom: 20px;
+.transaction-history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-.action-description {
+.transaction-history li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
     font-size: 1.5rem;
-    color: white;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
 }
+
+.transaction-history li.successful.replenishment {
+    color: green;
+}
+
+.transaction-history li.failed.replenishment, .transaction-history li.successful.transfer, .transaction-history li.failed.transfer, .transaction-history li.successful.payment, .transaction-history li.failed.payment {
+    color: red;
+}
+
+.transaction-history span {
+    margin-right: 10px;
+}
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 
@@ -8,11 +8,14 @@ import featureImage3 from '../assets/images/support.jpg';
 
 // Загрузите изображения для баннеров
 import bannerImage1 from '../assets/images/people.jpg'; // Убедитесь, что путь к изображению верен
-import bannerImage2 from '../assets/images/pay.jpg'; // Убедитесь, что путь к изображению верен
+import bannerImage2 from '../assets/images/pay.jpg';
+import axiosInstance from "../axiosConfig"; // Убедитесь, что путь к изображению верен
 
 const Home = () => {
     const isAuthenticated = !!localStorage.getItem('sessionToken');
     const navigate = useNavigate();
+    const [walletInfo, setWalletInfo] = useState(null);
+    const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,9 +30,69 @@ const Home = () => {
             });
         };
 
+        if (isAuthenticated) {
+            const fetchWalletInfo = async () => {
+                try {
+                    const response = await axiosInstance.get('http://localhost:8080/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
+                    setWalletInfo(response.data);
+                } catch (error) {
+                    console.error('Failed to fetch wallet info:', error.response ? error.response.data : error.message);
+                }
+            };
+
+            const fetchTransactions = async () => {
+                try {
+                    const response = await axiosInstance.get('http://localhost:8080/potato/api/transfers/getall');
+                    setTransactions(response.data.slice(0, 10));
+                } catch (error) {
+                    console.error('Failed to fetch transactions:', error.response ? error.response.data : error.message);
+                }
+            };
+
+            fetchWalletInfo();
+            fetchTransactions()
+        }
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    if (walletInfo === null && isAuthenticated) {
+        return <p>Loading...</p>;
+    }
+
+    const formatAmount = (amount, type, status) => {
+        const formattedAmount = Math.abs(amount).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' });
+        if (status === 'SUCCESSFUL') {
+            return type === 'REPLENISHMENT' ? `+${formattedAmount}` : `-${formattedAmount}`;
+        } else {
+            return `${formattedAmount} (неуспешно)`;
+        }
+    };
+
+    const getTransactionClassName = (type, status) => {
+        let className = '';
+        if (status === 'SUCCESSFUL') {
+            className = 'successful';
+            if (type === 'REPLENISHMENT') {
+                className += ' replenishment';
+            } else if (type === 'TRANSFER') {
+                className += ' transfer';
+            } else if (type === 'PAYMENT') {
+                className += ' payment';
+            }
+        } else {
+            className = 'failed';
+            if (type === 'REPLENISHMENT') {
+                className += ' replenishment';
+            } else if (type === 'TRANSFER') {
+                className += ' transfer';
+            } else if (type === 'PAYMENT') {
+                className += ' payment';
+            }
+        }
+        return className;
+    };
 
     return (
         <div className="home-container">
@@ -103,26 +166,37 @@ const Home = () => {
                     </div>
                 </>
             ) : (
-                <section className="actions">
-                    <h2>Добро пожаловать в Картошку!</h2>
-                    <Link to="/transfer">
-                        <button className="action-button">Сделать перевод</button>
-                    </Link>
-                    <p className="action-description">Отправляйте деньги быстро и легко по номеру телефона, ID или
-                        номеру счета.</p>
-                    <Link to="/balance">
-                        <button className="action-button">Проверить баланс</button>
-                    </Link>
-                    <p className="action-description">Просмотрите текущий баланс вашего кошелька.</p>
-                    <Link to="/transactions">
-                        <button className="action-button">История транзакций</button>
-                    </Link>
-                    <p className="action-description">Просматривайте все ваши прошлые транзакции в одном месте.</p>
-                    <Link to="/create-invoice">
-                        <button className="action-button">Создать счет</button>
-                    </Link>
-                    <p className="action-description">Создавайте счета и отправляйте их вашим клиентам и друзьям.</p>
-                </section>
+                <>
+                    <section className="actions">
+                        <div className="balance-container">
+                            <h1>Баланс</h1>
+                            <p>{walletInfo.amount.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
+                            <Link to="/topup">
+                                <button className="balance-button">Пополнить</button>
+                            </Link>
+                            <Link to="/balance">
+                                <button className="wallet-button">Кошелек</button>
+                            </Link>
+
+                        </div>
+                        <div className="transaction-history">
+                            <h2>История переводов</h2>
+                            <ul>
+                                {transactions.map((transaction) => (
+                                    <li key={transaction.id}
+                                        className={getTransactionClassName(transaction.transferType, transaction.transferStatus)}>
+                                        <span>{transaction.transferType === 'REPLENISHMENT' ? 'Пополнение' : (transaction.transferType === 'TRANSFER' ? 'Перевод' : 'Платеж')}:</span>
+                                        <span>{formatAmount(transaction.amount, transaction.transferType, transaction.transferStatus)}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <Link to="/transactions">
+                                <button className="view-all-button">Посмотреть все переводы</button>
+                            </Link>
+                        </div>
+                    </section>
+
+                </>
             )}
         </div>
     );

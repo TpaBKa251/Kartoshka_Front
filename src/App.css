@@ -115,48 +115,6 @@
   margin-top: 40px;
 }
 
-.actions {
-  text-align: center;
-  font-size: 2rem;
-  display: inline-block;
-  padding: 40px 200px;
-  background: rgba(87, 174, 255, 0.85);
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #26a7fb;
-  backdrop-filter: blur(10px);
-  margin: 100px 20px 20px;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.actions h2 {
-  font-size: 2.5rem;
-  color: white;
-  margin-bottom: 20px;
-}
-
-.action-button {
-  background: rgba(255, 255, 255, 0.8);
-  color: #000000;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  margin: 10px 0;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.action-button:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-5px);
-}
-
-.action-description {
-  color: white;
-  font-size: 1.5rem;
-}
 
 @keyframes fadeIn {
   from {
