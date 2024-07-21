@@ -11,6 +11,10 @@ import TransactionHistory from './components/TransactionHistory';
 import Invoices from './components/Invoices';
 import CreateInvoice from './components/CreateInvoice';
 import Header from './components/Header';
+import InvoiceDetails from './components/InvoieDetails';
+import TransferByPhone from "./components/TransferByPhone";
+import TransferById from "./components/TransferById";
+import TransferByInvoice from "./components/TransferByInvoice";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -30,6 +34,10 @@ function App() {
               <Route path="/transactions" element={<TransactionHistory />} />
               <Route path="/create-invoice" element={<CreateInvoice />} />
               <Route path="/invoices" element={<Invoices />} />
+              <Route path="/invoices/:id" element={<InvoiceDetails />} />
+              <Route path="/transfer/phone" element={<TransferByPhone />} />
+              <Route path="/transfer/invoice" element={<TransferByInvoice />} />
+              <Route path="/transfer/id" element={<TransferById />} />
             </Routes>
           </main>
         </div>

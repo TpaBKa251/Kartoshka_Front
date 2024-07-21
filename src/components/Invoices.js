@@ -35,7 +35,7 @@ const Invoices = () => {
     const fetchTotalDebt = async () => {
         try {
             const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/gettotal');
-            setTotalDebt(response.data.totalDebt);
+            setTotalDebt(response.data);
         } catch (error) {
             console.error('Error fetching total debt:', error.response ? error.response.data : error.message);
         }
@@ -56,14 +56,14 @@ const Invoices = () => {
 
     return (
         <div className="invoices-container">
-            <h2>Ваши инвойсы</h2>
+            <h2>Ваши счета на оплату</h2>
             <div className="invoices-list">
                 {invoices.map((invoice) => (
                     <div key={invoice.id} className="invoice-card">
-                        <p><strong>ID инвойса:</strong> {invoice.id}</p>
+                        <p><strong>ID счета:</strong> {invoice.id}</p>
                         <p><strong>Отправитель:</strong> {invoice.senderId}</p>
                         <p><strong>Получатель:</strong> {invoice.recipientId}</p>
-                        <p><strong>Сумма:</strong> {invoice.amount}</p>
+                        <p><strong>Сумма:</strong> {invoice.amount.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
                         <p><strong>Статус:</strong> {invoice.invoiceStatus}</p>
                         <p><strong>Тип:</strong> {invoice.invoiceType}</p>
                         <p><strong>Дата создания:</strong> {new Date(invoice.invoiceDateTime).toLocaleString()}</p>
@@ -79,7 +79,7 @@ const Invoices = () => {
             </div>
             <button onClick={fetchTotalDebt} className="debt-button">Вывести общую задолженность</button>
             {totalDebt !== null && (
-                <p className="total-debt">Общая задолженность: {totalDebt} руб.</p>
+                <p className="total-debt">Общая задолженность: {totalDebt.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
             )}
         </div>
     );

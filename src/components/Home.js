@@ -7,8 +7,8 @@ import featureImage2 from '../assets/images/cool.jpg';
 import featureImage3 from '../assets/images/support.jpg';
 
 // Загрузите изображения для баннеров
-import bannerImage1 from '../assets/images/people.jpg'; // Убедитесь, что путь к изображению верен
-import bannerImage2 from '../assets/images/pay.jpg';
+import bannerImage1 from '../assets/images/pay.jpg'; // Убедитесь, что путь к изображению верен
+import bannerImage2 from '../assets/images/replenishment.jpg';
 import axiosInstance from "../axiosConfig"; // Убедитесь, что путь к изображению верен
 
 const Home = () => {
@@ -16,6 +16,8 @@ const Home = () => {
     const navigate = useNavigate();
     const [walletInfo, setWalletInfo] = useState(null);
     const [transactions, setTransactions] = useState([]);
+    const [invoices, setInvoices] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,13 +51,29 @@ const Home = () => {
                 }
             };
 
+            const fetchInvoices = async () => {
+                try {
+                    const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/getallincoming');
+                    const unpaidIncomingInvoices = response.data.filter(invoice => invoice.invoiceStatus === 'UNPAID').slice(0, 5);
+                    setInvoices(unpaidIncomingInvoices);
+                } catch (error) {
+                    setError(error.response ? error.response.data : error.message);
+                }
+            };
+
             fetchWalletInfo();
-            fetchTransactions()
+            fetchTransactions();
+            fetchInvoices();
         }
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+
+    const handleViewInvoice = (invoiceId) => {
+        navigate(`/invoices/${invoiceId}`);
+    };
 
     if (walletInfo === null && isAuthenticated) {
         return <p>Loading...</p>;
@@ -167,7 +185,7 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    <section className="actions">
+                    <div className="actions">
                         <div className="balance-container">
                             <h1>Баланс</h1>
                             <p>{walletInfo.amount.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
@@ -194,7 +212,51 @@ const Home = () => {
                                 <button className="view-all-button">Посмотреть все переводы</button>
                             </Link>
                         </div>
-                    </section>
+                        <div className="invoice-container">
+                            <h2>Неоплаченные счета</h2>
+                            {invoices.length === 0 ? (
+                                <p>Нет неоплаченных счетов.</p>
+                            ) : (
+                                <ul className="invoice-list">
+                                    {invoices.map((invoice) => (
+                                        <li key={invoice.id} className="unpaid">
+                                            <span>{invoice.amount.toLocaleString('ru-RU', {
+                                                style: 'currency',
+                                                currency: 'RUB'
+                                            })}</span>
+                                            <button className="pay-button"
+                                                    onClick={() => handleViewInvoice(invoice.id)}>Оплатить
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            <Link to="/invoices">
+                                <button className="view-all-button">Посмотреть все счета</button>
+                            </Link>
+                        </div>
+                        <div className="transfer-banner">
+                            <h2>Перевести</h2>
+                            <button className="transfer-button" onClick={() => navigate('/transfer/phone')}>По номеру
+                                телефона
+                            </button>
+                            <button className="transfer-button" onClick={() => navigate('/transfer/id')}>По ID</button>
+                            <button className="transfer-button" onClick={() => navigate('/transfer/invoice')}>По ID
+                                счета на оплату
+                            </button>
+                        </div>
+                        <div className="create-invoice-banner">
+                            <h2>Создать счет на оплату</h2>
+                            <button className="create-invoice-button"
+                                    onClick={() => navigate('/create-invoice')}>Создать
+                            </button>
+                        </div>
+                        <div className="topup-banner">
+                            <h2>Пополнить</h2>
+                            <button className="topup-button" onClick={() => navigate('/create-invoice')}>Hesoyam</button>
+                            <button className="topup-button" onClick={() => navigate('/create-invoice')}>Рулетка</button>
+                        </div>
+                    </div>
 
                 </>
             )}
