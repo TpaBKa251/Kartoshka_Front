@@ -17,6 +17,7 @@ const Invoices = () => {
         };
 
         fetchInvoices();
+        fetchTotalDebt();
     }, []);
 
     const cancelInvoice = async (invoiceId) => {
@@ -55,7 +56,7 @@ const Invoices = () => {
     };
 
     return (
-        <div className="invoices-container">
+        <div className="invoices-container-d">
             <h2>Ваши счета на оплату</h2>
             <div className="invoices-list">
                 {invoices.map((invoice) => (
@@ -74,13 +75,15 @@ const Invoices = () => {
                         {invoice.invoiceType === 'INCOMING' && invoice.invoiceStatus === 'UNPAID' && (
                             <button onClick={() => payInvoice(invoice.id)} className="pay-button">Оплатить</button>
                         )}
+
                     </div>
+
                 ))}
+                {totalDebt !== null && (
+                    <p className="total-debt">Общая задолженность: {totalDebt.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
+                )}
             </div>
-            <button onClick={fetchTotalDebt} className="debt-button">Вывести общую задолженность</button>
-            {totalDebt !== null && (
-                <p className="total-debt">Общая задолженность: {totalDebt.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
-            )}
+
         </div>
     );
 };

@@ -1,18 +1,23 @@
 /* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
 
 .cta-button {
-    background: rgba(255, 255, 255, 1);
-    color: #000000;
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 10px;
+    background-color: rgba(94, 94, 94, 0);
+    color: white;
+    padding: 10px 20px;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: #ffffff;
     cursor: pointer;
+    font-size: 1.4rem;
+    margin-top: 10px;
+    backdrop-filter: blur(20px);
     transition: background 0.3s;
 }
 
 .cta-button:hover {
     background: #ffffff;
+    color: black;
 }
 
 .features {
@@ -126,98 +131,140 @@
 }
 
 
-/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96%;
+    padding: 20px;
+    background: rgba(255, 255, 255, .8);
+    border-radius: 50px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 50px 50px 300px;
+}
 
-/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
-
-/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
-
+/* Остальные стили */
 .balance-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 490px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    position: absolute;
-    top: 95%;
-    left: 10%;
-    width: 43.5%;
+    padding: 30px; /* Увеличить размер */
+    /background-color: white;
+    border-radius: 50px;
+    margin: 30px; /* Увеличить размер */
+    width: calc(100% - 60px); /* Увеличить размер */
 }
 
 .balance-container h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem; /* Увеличить размер */
+    margin-bottom: 20px; /* Увеличить размер */
     color: black;
 }
 
 .balance-container p {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem; /* Увеличить размер */
+    margin-bottom: 30px; /* Увеличить размер */
     color: black;
 }
 
 .balance-button, .wallet-button, .view-all-button {
-    background-color: rgba(0, 129, 234, 0.82);
-    color: white;
-    border: none;
+    background-color: rgba(94, 94, 94, 0);
+    color: #2b2b2b;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: #686868;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-top: 10px;
+    backdrop-filter: blur(20px);
+    transition: background 0.3s;
+}
+
+.topup-button, .create-invoice-button, .transfer-button{
+    background-color: rgba(94, 94, 94, 0);
+    color: #2b2b2b;
+    padding: 10px 20px;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: #686868;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-top: 10px;
+    backdrop-filter: blur(20px);
+    transition: background 0.3s;
 }
 
 .balance-button:hover, .wallet-button:hover, .view-all-button:hover {
-    background-color: rgba(0, 129, 234, 0.7);
+    background-color: rgba(0, 129, 234, 1);
+    border-color: rgba(0, 129, 234,1);
+    color: white;
+}
+
+.topup-button:hover, .create-invoice-button:hover, .transfer-button:hover{
+    background-color: #686868;
+    color: white;
 }
 
 .actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    position: relative;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
-.transaction-history {
+.left-column, .right-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    position: absolute;
-    top: 360px;
-    left: 10%;
-    width: 19%;
+    width: 48%;
 }
 
-.transaction-history h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+.transaction-history, .invoice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px; /* Увеличить размер */
+    background-color: rgba(198, 198, 198, 0.21);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.2);
+    margin: 30px; /* Увеличить размер */
+    width: calc(75% - 30px); /* Увеличить размер */
+}
+
+.transaction-history h2, .invoice-container h2 {
+    font-size: 2rem; /* Увеличить размер */
+    margin-bottom: 20px; /* Увеличить размер */
     color: black;
     text-align: center;
 }
 
-.transaction-history ul {
+.invoice-container p {
+    color: #000;
+    font-size: 1.3rem;
+}
+
+.transaction-history ul, .invoice-list ul {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 }
 
-.transaction-history li {
+
+.transaction-history li, .invoice-list li {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    padding: 15px; /* Увеличить размер */
+    font-size: 1.5rem; /* Увеличить размер */
+    margin-bottom: 7.5px; /* Увеличить размер */
     border-bottom: 1px solid #ddd;
+    color: black;
 }
 
 .transaction-history li.successful.replenishment {
@@ -228,65 +275,8 @@
     color: #e65252;
 }
 
-.transaction-history span {
-    margin-right: 10px;
-}
-
-.invoice-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    width: 90%;
-    max-width: 600px;
-    position: absolute;
-    right: 45%;
-    top: 360px;
-}
-
-.invoice-container h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: black;
-    text-align: center;
-}
-
-.invoice-container p {
-    color: black;
-    font-size: 1.3rem;
-}
-
-.invoice-list {
-    width: 100%;
-}
-
-.invoice-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.invoice-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-}
-
-.invoice-list li.unpaid {
-    color: red;
-}
-
-.invoice-list span {
-    margin-right: 10px;
+.transaction-history span, .invoice-list span {
+    margin-right: 15px; /* Увеличить размер */
 }
 
 .pay-button {
@@ -294,131 +284,88 @@
     color: black;
     border: none;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .pay-button:hover {
     background-color: rgba(54, 205, 42, 0.72);
 }
 
-.transfer-banner {
+.transfer-banner, .create-invoice-banner, .topup-banner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    /justify-content: center;
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #E4E4E4FF;
+    border-radius: 50px;
+    /box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    width: 300px;  /* Установите фиксированную ширину */
-    height: 294px; /* Установите фиксированную высоту */
+    height: 302px; /* Установите фиксированную высоту */
     text-align: center;
-    position: absolute;
-    right: 10%;
-    top: 95%;
+    width: calc(50% - 20px);
+    align-self: flex-end; /* Выровнять вправо */
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.transfer-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: black;
-}
-
-.transfer-button {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.transfer-button:hover {
-    background-color: #3700b3;
+.transfer-banner:hover, .create-invoice-banner:hover, .topup-banner:hover {
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
 }
 
 .create-invoice-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    width: 300px;  /* Установите фиксированную ширину */
-    height: 294px; /* Установите фиксированную высоту */
-    text-align: center;
-    position: absolute;
-    right: 23%;
-    top: 95%;
-}
-
-.create-invoice-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: black;
-}
-
-.create-invoice-button {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.create-invoice-button:hover {
-    background-color: #3700b3;
+    background-color: rgba(131, 169, 213, 0.24);
 }
 
 .topup-banner {
+    background-color: rgba(170, 149, 188, 0.27);
+}
+
+.transfer-banner h2, .create-invoice-banner h2, .topup-banner h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
+    /backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.transfer-banner.small, .create-invoice-banner.small, .topup-banner.small {
+    width: calc(50% - 20px);
+}
+
+.transfer-banner {
+    background-image: url('../assets/images/transfer.png'); /* Путь к изображению для перевода */
+}
+
+.create-invoice-banner {
+    background-image: url('../assets/images/invoice.png'); /* Путь к изображению для создания счета */
+}
+
+.topup-banner {
+    background-image: url('../assets/images/topup.png'); /* Путь к изображению для пополнения */
+}
+
+.main-container {
+    background-image: url('../assets/images/back2.jpg');
+}
+
+.greeting {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    width: 300px;  /* Установите фиксированную ширину */
-    height: 294px; /* Установите фиксированную высоту */
-    text-align: center;
-    position: absolute;
-    right: 23%;
-    top: 900%;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-.topup-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: black;
+.greeting h1 {
+    font-size: 4rem;
+    padding: 150px;
 }
 
-.topup-button {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-}
 
-.topup-button:hover {
-    background-color: #3700b3;
-}
 
 
 

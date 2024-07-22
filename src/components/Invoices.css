@@ -1,5 +1,6 @@
-.invoices-container {
+.invoices-container-d {
     padding: 20px;
+    align-items: center;
 }
 
 .invoices-list {
@@ -22,6 +23,7 @@
 .invoice-card p {
     margin: 5px 0;
     color: black;
+    text-align: center;
 }
 
 .invoice-card .cancel-button {
@@ -33,6 +35,8 @@
     cursor: pointer;
     transition: background 0.3s;
     margin-right: 10px;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .invoice-card .cancel-button:hover {
@@ -47,6 +51,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    font-size: 1.2rem;
 }
 
 .invoice-card .pay-button:hover {
@@ -72,4 +77,9 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
+}
+
+.invoices-container-d h2{
+    text-align: center;
 }

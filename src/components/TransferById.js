@@ -7,6 +7,7 @@ import './Transfer.css';
 const TransferById = () => {
     const [recipientId, setRecipientId] = useState('');
     const [amount, setAmount] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,6 +16,7 @@ const TransferById = () => {
             alert('Перевод успешно выполнен');
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);
+            setError(error.response ? error.response.data : 'Перевод не выполнен');
         }
     };
 
@@ -36,6 +38,7 @@ const TransferById = () => {
                 required
             />
             <button type="submit">Отправить</button>
+            {error && <p className="error">{error}</p>}
         </form>
     );
 };

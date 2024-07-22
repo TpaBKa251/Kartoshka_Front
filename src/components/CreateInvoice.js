@@ -25,35 +25,29 @@ const CreateInvoice = () => {
     return (
         <div className="create-invoice-container">
             <h2>Создать счет на оплату</h2>
-            {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <label>
-                    ID получателя:
                     <input
                         type="text"
                         value={recipientId}
+                        placeholder="ID получателя"
                         onChange={(e) => setRecipientId(e.target.value)}
                         required
                     />
-                </label>
-                <label>
-                    Сумма:
                     <input
                         type="number"
                         value={amount}
+                        placeholder="Сумма"
                         onChange={(e) => setAmount(e.target.value)}
                         required
                     />
-                </label>
-                <label>
-                    Комментарий (необязательно):
                     <input
                         type="text"
                         value={comment}
+                        placeholder="Комментарий (опционально)"
                         onChange={(e) => setComment(e.target.value)}
                     />
-                </label>
                 <button type="submit">Создать</button>
+                {error && <p className="error">{error}</p>}
             </form>
         </div>
     );

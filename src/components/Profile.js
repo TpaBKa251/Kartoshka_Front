@@ -36,16 +36,16 @@ const Profile = () => {
                 <div className="profile-info">
                     <h2>Профиль пользователя</h2>
                     <p><strong>ID:</strong> {profileData.id}</p>
-                    <p><strong>Wallet ID:</strong> {profileData.walletId}</p>
-                    <p><strong>First Name:</strong> {profileData.firstName}</p>
-                    <p><strong>Last Name:</strong> {profileData.lastName}</p>
-                    <p><strong>Middle Name:</strong> {profileData.middleName}</p>
-                    <p><strong>Full Name:</strong> {profileData.fullName}</p>
+                    <p><strong>ID кошелька:</strong> {profileData.walletId}</p>
+                    <p><strong>Имя:</strong> {profileData.firstName}</p>
+                    <p><strong>Фамилия:</strong> {profileData.lastName}</p>
+                    <p><strong>Отчество:</strong> {profileData.middleName}</p>
+                    <p><strong>Полное имя:</strong> {profileData.fullName}</p>
                     <p><strong>Email:</strong> {profileData.email}</p>
-                    <p><strong>Phone:</strong> {profileData.phone}</p>
-                    <p><strong>Registration Date:</strong> {profileData.registrationDate}</p>
-                    <p><strong>Last Update Date:</strong> {profileData.lastUpdateDate}</p>
-                    <p><strong>Birth Date:</strong> {profileData.birthDate}</p>
+                    <p><strong>Номер телефона:</strong> {profileData.phone}</p>
+                    <p><strong>Дата регистрации:</strong> {new Date(profileData.registrationDate).toLocaleString()}</p>
+                    <p><strong>Дата последнего обновления:</strong> {new Date(profileData.lastUpdateDate).toLocaleString()}</p>
+                    <p><strong>Дата рождения:</strong> {new Date(profileData.birthDate).toLocaleDateString()}</p>
                     <button onClick={handleEditClick}>Редактировать профиль</button>
                 </div>
             ) : (

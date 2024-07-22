@@ -7,14 +7,17 @@ import './Transfer.css';
 const TransferByPhone = () => {
     const [phone, setPhone] = useState('');
     const [amount, setAmount] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await axiosInstance.post('http://localhost:8080/potato/api/transfers/viaphone', { recipientPhone: phone, amount });
             alert('Перевод успешно выполнен');
+            setError('');
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);
+            setError(error.response ? error.response.data : 'Перевод не выполнен');
         }
     };
 
@@ -36,6 +39,7 @@ const TransferByPhone = () => {
                 required
             />
             <button type="submit">Отправить</button>
+            {error && <p className="error">{error}</p>}
         </form>
     );
 };

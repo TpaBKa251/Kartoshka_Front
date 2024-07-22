@@ -27,9 +27,11 @@ const Balance = () => {
     return (
         <div className="balance-container">
             <h2>Информация о кошельке</h2>
-            <p><strong>ID кошелька:</strong> {walletInfo.id}</p>
-            <p><strong>Баланс:</strong> {walletInfo.amount}</p>
-            <p><strong>Последнее обновление:</strong> {new Date(walletInfo.lastUpdate).toLocaleString()}</p>
+            <h2><strong>ID кошелька:</strong> {walletInfo.id}</h2>
+            <h2><strong>Баланс:</strong> {walletInfo.amount.toLocaleString('ru-RU', {
+                style: 'currency',
+                currency: 'RUB'})}</h2>
+            <h2><strong>Последнее обновление:</strong> {new Date(walletInfo.lastUpdate).toLocaleString()}</h2>
         </div>
     );
 };

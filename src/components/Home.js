@@ -5,10 +5,15 @@ import './Home.css';
 import featureImage1 from '../assets/images/modern_technologies.jpg';
 import featureImage2 from '../assets/images/cool.jpg';
 import featureImage3 from '../assets/images/support.jpg';
+import logoImage from '../assets/images/potato.png';
 
 // Загрузите изображения для баннеров
 import bannerImage1 from '../assets/images/pay.jpg'; // Убедитесь, что путь к изображению верен
 import bannerImage2 from '../assets/images/replenishment.jpg';
+
+import actionImage1 from '../assets/images/transfer.png';
+import actionImage2 from '../assets/images/invoice.png';
+import actionImage3 from '../assets/images/topup.png';
 import axiosInstance from "../axiosConfig"; // Убедитесь, что путь к изображению верен
 
 const Home = () => {
@@ -18,10 +23,13 @@ const Home = () => {
     const [transactions, setTransactions] = useState([]);
     const [invoices, setInvoices] = useState([]);
     const [error, setError] = useState(null);
+    const [totalDebt, setTotalDebt] = useState(null);
+    const [profileData, setProfileData] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
             const sections = document.querySelectorAll('.info-section, .banner');
+
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
                 if (rect.top <= window.innerHeight && rect.bottom >= 0) {
@@ -29,6 +37,12 @@ const Home = () => {
                 } else {
                     //section.classList.remove('visible');
                 }
+            });
+
+            const parallaxElements2 = document.querySelectorAll('.main-container');
+            parallaxElements2.forEach(element => {
+                const scrolled = window.scrollY;
+                element.style.transform = `translateY(${scrolled * .3}px)`;
             });
         };
 
@@ -45,7 +59,12 @@ const Home = () => {
             const fetchTransactions = async () => {
                 try {
                     const response = await axiosInstance.get('http://localhost:8080/potato/api/transfers/getall');
-                    setTransactions(response.data.slice(0, 10));
+                    if (response.data.length > 10) {
+                        setTransactions(response.data.slice(response.data.length - 10, response.data.length));
+                    }
+                    else {
+                        setTransactions(response.data.slice(0, 10));
+                    }
                 } catch (error) {
                     console.error('Failed to fetch transactions:', error.response ? error.response.data : error.message);
                 }
@@ -54,16 +73,42 @@ const Home = () => {
             const fetchInvoices = async () => {
                 try {
                     const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/getallincoming');
-                    const unpaidIncomingInvoices = response.data.filter(invoice => invoice.invoiceStatus === 'UNPAID').slice(0, 5);
-                    setInvoices(unpaidIncomingInvoices);
+                    if (response.data.length > 5) {
+                        setInvoices(response.data.filter(invoice => invoice.invoiceStatus === 'UNPAID').slice(response.data.length - 5, response.data.length));
+                    }
+                    else {
+                        setInvoices(response.data.filter(invoice => invoice.invoiceStatus === 'UNPAID').slice(0, 5));
+                    }
+
                 } catch (error) {
                     setError(error.response ? error.response.data : error.message);
                 }
             };
 
+            const fetchProfile = async () => {
+                try {
+                    const response = await axiosInstance.get('http://localhost:8080/potato/api/users/profile'); // предполагается, что у вас есть соответствующий эндпоинт
+                    setProfileData(response.data);
+                } catch (error) {
+                    console.error('Error fetching profile data:', error.response ? error.response.data : error.message);
+                }
+            };
+
+            const fetchTotalDebt = async () => {
+                try {
+                    const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/gettotal');
+                    setTotalDebt(response.data);
+                } catch (error) {
+                    console.error('Error fetching total debt:', error.response ? error.response.data : error.message);
+                }
+            };
+
+
             fetchWalletInfo();
             fetchTransactions();
             fetchInvoices();
+            fetchTotalDebt();
+            fetchProfile();
         }
 
         window.addEventListener('scroll', handleScroll);
@@ -144,8 +189,11 @@ const Home = () => {
                     <div className="banner">
                         <div className="banner-content">
                             <h3>Кошелёк Картошка</h3>
-                            <p>Получите сразу после регистрации. Платите им в онлайне за услуги и товары или выставляйте счета на оплату и получайте деньги на свой кошелек. А также бесплатно переводите деньги.</p>
-                            <button className="banner-button" onClick={() => navigate('/register')}>Зарегистрироваться</button>
+                            <p>Получите сразу после регистрации. Платите им в онлайне за услуги и товары или выставляйте
+                                счета на оплату и получайте деньги на свой кошелек. А также бесплатно переводите
+                                деньги.</p>
+                            <button className="banner-button" onClick={() => navigate('/register')}>Зарегистрироваться
+                            </button>
                         </div>
                         <img src={bannerImage1} alt="Banner 1"/>
                     </div>
@@ -177,86 +225,162 @@ const Home = () => {
                     <div className="banner">
                         <div className="banner-content">
                             <h3>Экслюзивная функция Hesoyam</h3>
-                            <p>А также рулетка. Можете без риска пополнить кошелек на желаемую сумму или попытать удачу и получить во много раз больше.</p>
-                            <button className="banner-button" onClick={() => navigate('/register')}>За кошельком</button>
+                            <p>А также рулетка. Можете без риска пополнить кошелек на желаемую сумму или попытать удачу
+                                и получить во много раз больше.</p>
+                            <button className="banner-button" onClick={() => navigate('/register')}>За кошельком
+                            </button>
                         </div>
                         <img src={bannerImage2} alt="Banner 2"/>
                     </div>
+                    <footer>
+                        <div className="footer-container">
+                            <div className="footer-links">
+                                <a href="#">API Картошка</a>
+                                <a href="#">Безопасность в интернете</a>
+                                <a href="#">Юридическая информация</a>
+                            </div>
+                            <div className="footer-contact">
+                                <p>+7 909 538-22-25</p>
+                                <a href="#">Помощь</a>
+                                <a href="#">Контакты</a>
+                                <a href="#">Вакансии</a>
+                                <a href="#">Картошка для бизнеса</a>
+                            </div>
+                            <div className="footer-bottom">
+                                <div className="footer-logo">
+                                    <img src={logoImage} alt="Logo"/>
+                                    <a>© 2024 ИП «Илья Лапшин». Лицензия Банка России отсутствует</a>
+                                </div>
+                                <a href="#">Политика конфиденциальности</a>
+                            </div>
+                        </div>
+                    </footer>
+
                 </>
             ) : (
                 <>
-                    <div className="actions">
-                        <div className="balance-container">
-                            <h1>Баланс</h1>
-                            <p>{walletInfo.amount.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
-                            <Link to="/topup">
-                                <button className="balance-button">Пополнить</button>
-                            </Link>
-                            <Link to="/balance">
-                                <button className="wallet-button">Кошелек</button>
-                            </Link>
-
-                        </div>
-                        <div className="transaction-history">
-                            <h2>История переводов</h2>
-                            <ul>
-                                {transactions.map((transaction) => (
-                                    <li key={transaction.id}
-                                        className={getTransactionClassName(transaction.transferType, transaction.transferStatus)}>
-                                        <span>{transaction.transferType === 'REPLENISHMENT' ? 'Пополнение' : (transaction.transferType === 'TRANSFER' ? 'Перевод' : 'Платеж')}:</span>
-                                        <span>{formatAmount(transaction.amount, transaction.transferType, transaction.transferStatus)}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link to="/transactions">
-                                <button className="view-all-button">Посмотреть все переводы</button>
-                            </Link>
-                        </div>
-                        <div className="invoice-container">
-                            <h2>Неоплаченные счета</h2>
-                            {invoices.length === 0 ? (
-                                <p>Нет неоплаченных счетов.</p>
-                            ) : (
-                                <ul className="invoice-list">
-                                    {invoices.map((invoice) => (
-                                        <li key={invoice.id} className="unpaid">
-                                            <span>{invoice.amount.toLocaleString('ru-RU', {
-                                                style: 'currency',
-                                                currency: 'RUB'
-                                            })}</span>
-                                            <button className="pay-button"
-                                                    onClick={() => handleViewInvoice(invoice.id)}>Оплатить
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                            <Link to="/invoices">
-                                <button className="view-all-button">Посмотреть все счета</button>
-                            </Link>
-                        </div>
-                        <div className="transfer-banner">
-                            <h2>Перевести</h2>
-                            <button className="transfer-button" onClick={() => navigate('/transfer/phone')}>По номеру
-                                телефона
-                            </button>
-                            <button className="transfer-button" onClick={() => navigate('/transfer/id')}>По ID</button>
-                            <button className="transfer-button" onClick={() => navigate('/transfer/invoice')}>По ID
-                                счета на оплату
-                            </button>
-                        </div>
-                        <div className="create-invoice-banner">
-                            <h2>Создать счет на оплату</h2>
-                            <button className="create-invoice-button"
-                                    onClick={() => navigate('/create-invoice')}>Создать
-                            </button>
-                        </div>
-                        <div className="topup-banner">
-                            <h2>Пополнить</h2>
-                            <button className="topup-button" onClick={() => navigate('/create-invoice')}>Hesoyam</button>
-                            <button className="topup-button" onClick={() => navigate('/create-invoice')}>Рулетка</button>
+                    <div className="greeting">
+                        {profileData !== null && (
+                            <h1 align='center'>Добро пожаловать, {profileData.firstName}</h1>
+                        )}
+                    </div>
+                    <div className="main-container">
+                        <div className="actions">
+                            <div className="left-column">
+                                <div className="balance-container">
+                                    <h1>Баланс</h1>
+                                    {totalDebt !== null && (
+                                        <h2>Задолженность: {totalDebt.toLocaleString('ru-RU', {
+                                            style: 'currency',
+                                            currency: 'RUB'
+                                        })}</h2>
+                                    )}
+                                    <p>{walletInfo.amount.toLocaleString('ru-RU', {
+                                        style: 'currency',
+                                        currency: 'RUB'
+                                    })}</p>
+                                    <Link to="/topup">
+                                        <button className="balance-button">Пополнить</button>
+                                    </Link>
+                                    <Link to="/balance">
+                                        <button className="wallet-button">Кошелек</button>
+                                    </Link>
+                                </div>
+                                <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
+                                    <div className="transaction-history">
+                                        <h2>История переводов</h2>
+                                        <ul>
+                                            {transactions.map((transaction) => (
+                                                <li key={transaction.id}
+                                                    className={getTransactionClassName(transaction.transferType, transaction.transferStatus)}>
+                                                    <span>{transaction.transferType === 'REPLENISHMENT' ? 'Пополнение' : (transaction.transferType === 'TRANSFER' ? 'Перевод' : 'Платеж')}:</span>
+                                                    <span>{formatAmount(transaction.amount, transaction.transferType, transaction.transferStatus)}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link to="/transactions">
+                                            <button className="view-all-button">Посмотреть все переводы</button>
+                                        </Link>
+                                    </div>
+                                    <div className="invoice-container">
+                                        <h2>Неоплаченные счета</h2>
+                                        {invoices.length === 0 ? (
+                                            <p>Нет неоплаченных счетов.</p>
+                                        ) : (
+                                            <ul className="invoice-list">
+                                                {invoices.map((invoice) => (
+                                                    <li key={invoice.id} className="unpaid">
+                                    <span>{invoice.amount.toLocaleString('ru-RU', {
+                                        style: 'currency',
+                                        currency: 'RUB'
+                                    })}</span>
+                                                        <button className="pay-button"
+                                                                onClick={() => handleViewInvoice(invoice.id)}>Оплатить
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        <Link to="/invoices">
+                                            <button className="view-all-button">Посмотреть все счета</button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="right-column">
+                                <div className="transfer-banner small">
+                                    <h2>Перевести</h2>
+                                    <button className="transfer-button" onClick={() => navigate('/transfer/phone')}>По
+                                        номеру телефона
+                                    </button>
+                                    <button className="transfer-button" onClick={() => navigate('/transfer/id')}>По ID
+                                    </button>
+                                    <button className="transfer-button" onClick={() => navigate('/transfer/invoice')}>По
+                                        ID счета на оплату
+                                    </button>
+                                </div>
+                                <div className="create-invoice-banner small">
+                                    <h2>Создать счет на оплату</h2>
+                                    <button className="create-invoice-button"
+                                            onClick={() => navigate('/create-invoice')}>Создать
+                                    </button>
+                                </div>
+                                <div className="topup-banner small">
+                                    <h2>Пополнить</h2>
+                                    <button className="topup-button"
+                                            onClick={() => navigate('/topup')}>Hesoyam
+                                    </button>
+                                    <button className="topup-button"
+                                            onClick={() => navigate('/roulette')}>Рулетка
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <footer>
+                        <div className="footer-container">
+                            <div className="footer-links">
+                                <a href="#">API Картошка</a>
+                                <a href="#">Безопасность в интернете</a>
+                                <a href="#">Юридическая информация</a>
+                            </div>
+                            <div className="footer-contact">
+                                <p>+7 909 538-22-25</p>
+                                <a href="#">Помощь</a>
+                                <a href="#">Контакты</a>
+                                <a href="#">Вакансии</a>
+                                <a href="#">Картошка для бизнеса</a>
+                            </div>
+                            <div className="footer-bottom">
+                                <div className="footer-logo">
+                                    <img src={logoImage} alt="Logo"/>
+                                    <a>© 2024 ИП «Илья Лапшин». Лицензия Банка России отсутствует</a>
+                                </div>
+                                <a href="#">Политика конфиденциальности</a>
+                            </div>
+                        </div>
+                    </footer>
 
                 </>
             )}

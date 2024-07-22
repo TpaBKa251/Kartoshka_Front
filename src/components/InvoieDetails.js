@@ -35,8 +35,10 @@ const InvoiceDetails = () => {
             });
             setInvoice({ ...invoice, status: 'PAID' });
             console.log('Payment response:', response.data); // Debugging line
+            alert("Счет оплачен")
         } catch (error) {
             console.error('Failed to confirm payment:', error.response ? error.response.data : error.message);
+            setError(error.response ? error.response.data : error.message);
         }
     };
 
@@ -44,9 +46,6 @@ const InvoiceDetails = () => {
         return <p>Загрузка...</p>;
     }
 
-    if (error) {
-        return <p>Ошибка: {error}</p>;
-    }
 
     return (
         <div className="invoice-details-container">
@@ -70,6 +69,7 @@ const InvoiceDetails = () => {
                     <Link to="/invoices">
                         <button className="back-button">Назад к счетам</button>
                     </Link>
+                    {error && <p className="error">{error}</p>}
                 </div>
             ) : (
                 <p>Счет не найден.</p>

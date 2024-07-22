@@ -15,6 +15,7 @@ const Registration = () => {
         password: '',
     });
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,9 +26,12 @@ const Registration = () => {
         try {
             const response = await axiosInstance.post('http://localhost:8080/potato/api/users', formData);
             console.log('Registration successful:', response.data);
+            setError('');
+            setMessage('Вы зарегистрированы!')
             // Redirect or show a success message
         } catch (error) {
             setError(error.response ? error.response.data : 'Регистраци провалена');
+            setMessage('');
         }
     };
 
@@ -93,6 +97,7 @@ const Registration = () => {
                 />
                 <button type="submit">Зарегистрироваться</button>
                 {error && <p className="error">{error}</p>}
+                {message && <p>{message}</p>}
             </form>
         </div>
     );

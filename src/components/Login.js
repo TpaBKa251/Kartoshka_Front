@@ -43,6 +43,8 @@ const Login = () => {
         } catch (error) {
             setError(error.response ? error.response.data : 'Login failed');
         }
+
+        window.location.reload();
     };
 
     return (

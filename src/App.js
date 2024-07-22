@@ -16,31 +16,66 @@ import TransferByPhone from "./components/TransferByPhone";
 import TransferById from "./components/TransferById";
 import TransferByInvoice from "./components/TransferByInvoice";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import TopUp from "./components/TopUp";
+import Roulette from "./components/Roulette";
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('sessionToken');
+
   return (
       <Router>
-        <div className="App">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/transfer" element={<Transfer />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/balance" element={<Balance />} />
-              <Route path="/transactions" element={<TransactionHistory />} />
-              <Route path="/create-invoice" element={<CreateInvoice />} />
-              <Route path="/invoices" element={<Invoices />} />
-              <Route path="/invoices/:id" element={<InvoiceDetails />} />
-              <Route path="/transfer/phone" element={<TransferByPhone />} />
-              <Route path="/transfer/invoice" element={<TransferByInvoice />} />
-              <Route path="/transfer/id" element={<TransferById />} />
-            </Routes>
-          </main>
+        <div>
+          {!isAuthenticated ? (
+              <div className="App">
+                <Header />
+                <main>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/register" element={<Registration />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/transfer" element={<Transfer />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/balance" element={<Balance />} />
+                    <Route path="/transactions" element={<TransactionHistory />} />
+                    <Route path="/create-invoice" element={<CreateInvoice />} />
+                    <Route path="/invoices" element={<Invoices />} />
+                    <Route path="/invoices/:id" element={<InvoiceDetails />} />
+                    <Route path="/transfer/phone" element={<TransferByPhone />} />
+                    <Route path="/transfer/invoice" element={<TransferByInvoice />} />
+                    <Route path="/transfer/id" element={<TransferById />} />
+                    <Route path="/topup" element={<TopUp />} />
+                    <Route path="/roulette" element={<Roulette />} />
+                  </Routes>
+                </main>
+              </div>
+          ) : (
+              <div className="app-d">
+                <Header/>
+                <main>
+                  <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/register" element={<Registration/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/transfer" element={<Transfer/>}/>
+                    <Route path="/logout" element={<Logout/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/balance" element={<Balance/>}/>
+                    <Route path="/transactions" element={<TransactionHistory/>}/>
+                    <Route path="/create-invoice" element={<CreateInvoice/>}/>
+                    <Route path="/invoices" element={<Invoices/>}/>
+                    <Route path="/invoices/:id" element={<InvoiceDetails/>}/>
+                    <Route path="/transfer/phone" element={<TransferByPhone/>}/>
+                    <Route path="/transfer/invoice" element={<TransferByInvoice/>}/>
+                    <Route path="/transfer/id" element={<TransferById/>}/>
+                    <Route path="/topup" element={<TopUp/>}/>
+                    <Route path="/roulette" element={<Roulette/>}/>
+                  </Routes>
+                </main>
+              </div>
+          )}
         </div>
+
       </Router>
   );
 }

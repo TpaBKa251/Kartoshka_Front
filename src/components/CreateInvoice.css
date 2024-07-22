@@ -1,15 +1,19 @@
 /* src/components/CreateInvoice.css */
 
 .create-invoice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    color: #333;
+    width: 80%;
     max-width: 500px;
-    margin: 20px auto;
-    text-align: center;
+    margin: 40px auto;
+    color: #333;
 }
 
 .create-invoice-container h2 {
@@ -20,7 +24,17 @@
 .create-invoice-container form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    /box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 500px;
+    margin: 40px auto;
+    color: #333;
 }
 
 .create-invoice-container label {
@@ -30,25 +44,28 @@
 }
 
 .create-invoice-container input {
+    font-size: 1.2em;
     padding: 10px;
-    border: 1px solid #ccc;
-    background-color: rgba(202, 202, 202, 0.25);
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    width: 96%;
+    width: 90%;
+    max-width: 800px;
 }
 
 .create-invoice-container button {
+    font-size: 1.2em;
     padding: 10px 20px;
+    margin: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    background: rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
 .create-invoice-container button:hover {
-    background-color: #45a049;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .error {

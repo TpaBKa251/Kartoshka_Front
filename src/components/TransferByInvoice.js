@@ -6,6 +6,7 @@ import './Transfer.css';
 
 const TransferByInvoice = () => {
     const [invoiceId, setInvoiceId] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -14,6 +15,7 @@ const TransferByInvoice = () => {
             alert('Перевод успешно выполнен');
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);
+            setError(error.response ? error.response.data : 'Перевод не выполнен');
         }
     };
 
@@ -28,6 +30,7 @@ const TransferByInvoice = () => {
                 required
             />
             <button type="submit">Отправить</button>
+            {error && <p className="error">{error}</p>}
         </form>
     );
 };

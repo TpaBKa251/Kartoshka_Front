@@ -23,15 +23,15 @@ const Header = () => {
             </div>
         </header>
     ) : (
-        <header className="header-hero">
+        <header className="header-hero-d">
             <div className="App-nav">
                 <Link to="/" className="logo">
                     <img src={logoImage} alt="Logo" className="logo-image"/>
                     Картошка
                 </Link>
                 <div className="auth-links">
-                    <Link to="/logout" className="cta-button">Выход</Link>
-                    <Link to="/profile" className="cta-button">Профиль</Link>
+                    <Link to="/logout" className="cta-button-d">Выход</Link>
+                    <Link to="/profile" className="cta-button-d">Профиль</Link>
                 </div>
             </div>
         </header>
