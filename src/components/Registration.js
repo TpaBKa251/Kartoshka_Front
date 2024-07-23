@@ -24,7 +24,7 @@ const Registration = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.post('http://localhost:8080/potato/api/users', formData);
+            const response = await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/users', formData);
             console.log('Registration successful:', response.data);
             setError('');
             setMessage('Вы зарегистрированы!')
