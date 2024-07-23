@@ -61,7 +61,6 @@ const Registration = () => {
                     placeholder="Отчество (если есть)"
                     value={formData.middleName}
                     onChange={handleChange}
-                    required
                 />
                 <input
                     type="text"
