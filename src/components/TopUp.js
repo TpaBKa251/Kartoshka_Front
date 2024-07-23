@@ -10,7 +10,7 @@ const TopUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.post('http://localhost:8080/potato/api/transfers/hesoyam', { amount });
+            const response = await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/hesoyam', { amount });
             setMessage(response.data.result);
         } catch (error) {
             setMessage('Ошибка при пополнении.');

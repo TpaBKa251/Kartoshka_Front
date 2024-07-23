@@ -10,7 +10,7 @@ const Balance = () => {
     useEffect(() => {
         const fetchWalletInfo = async () => {
             try {
-                const response = await axiosInstance.get('http://localhost:8080/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
                 setWalletInfo(response.data);
             } catch (error) {
                 console.error('Failed to fetch wallet info:', error.response ? error.response.data : error.message);

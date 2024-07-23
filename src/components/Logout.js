@@ -11,7 +11,7 @@ const Logout = () => {
         const logout = async () => {
             try {
                 // Perform the logout request
-                await axiosInstance.patch('http://localhost:8080/potato/api/sessions/logout');
+                await axiosInstance.patch('https://shift-intensive-potato-wallet.onrender.com/potato/api/sessions/logout');
 
                 // Clear the token and session ID from local storage
                 localStorage.removeItem('sessionToken');

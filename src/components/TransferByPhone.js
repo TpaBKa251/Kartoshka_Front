@@ -12,7 +12,7 @@ const TransferByPhone = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.post('http://localhost:8080/potato/api/transfers/viaphone', { recipientPhone: phone, amount });
+            await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/viaphone', { recipientPhone: phone, amount });
             alert('Перевод успешно выполнен');
             setError('');
         } catch (error) {

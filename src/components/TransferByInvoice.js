@@ -11,7 +11,7 @@ const TransferByInvoice = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.post('http://localhost:8080/potato/api/transfers/viainvoice', { invoiceId });
+            await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/viainvoice', { invoiceId });
             alert('Перевод успешно выполнен');
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);

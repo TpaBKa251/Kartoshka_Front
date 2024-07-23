@@ -20,12 +20,12 @@ const Login = () => {
             const isEmail = identifier.includes('@');
 
             if (isEmail) {
-                response = await axios.post('http://localhost:8080/potato/api/sessions/loginviaemail', {
+                response = await axios.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/sessions/loginviaemail', {
                     email: identifier,
                     password,
                 });
             } else {
-                response = await axios.post('http://localhost:8080/potato/api/sessions/loginviaphone', {
+                response = await axios.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/sessions/loginviaphone', {
                     phone: identifier,
                     password,
                 });

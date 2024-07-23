@@ -23,7 +23,7 @@ const EditProfile = ({ onClose, profileData }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.patch('http://localhost:8080/potato/api/users/edit', formData); // предполагается, что у вас есть соответствующий эндпоинт
+            await axiosInstance.patch('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/edit', formData); // предполагается, что у вас есть соответствующий эндпоинт
             alert('Профиль успешно обновлен');
             onClose();
         } catch (error) {

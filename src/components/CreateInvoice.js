@@ -15,7 +15,7 @@ const CreateInvoice = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.post('http://localhost:8080/potato/api/invoices', { recipientId, amount, comment });
+            await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices', { recipientId, amount, comment });
             navigate('/');
         } catch (error) {
             setError(error.response ? error.response.data : error.message);

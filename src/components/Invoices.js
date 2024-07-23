@@ -9,7 +9,7 @@ const Invoices = () => {
     useEffect(() => {
         const fetchInvoices = async () => {
             try {
-                const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/getall');
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/getall');
                 setInvoices(response.data);
             } catch (error) {
                 console.error('Error fetching invoices:', error.response ? error.response.data : error.message);
@@ -22,7 +22,7 @@ const Invoices = () => {
 
     const cancelInvoice = async (invoiceId) => {
         try {
-            await axiosInstance.patch(`http://localhost:8080/potato/api/invoices/cancel/${invoiceId}`);
+            await axiosInstance.patch(`https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/cancel/${invoiceId}`);
             setInvoices((prevInvoices) =>
                 prevInvoices.map((invoice) =>
                     invoice.id === invoiceId ? { ...invoice, invoiceStatus: 'CANCELLED' } : invoice
@@ -35,7 +35,7 @@ const Invoices = () => {
 
     const fetchTotalDebt = async () => {
         try {
-            const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/gettotal');
+            const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/gettotal');
             setTotalDebt(response.data);
         } catch (error) {
             console.error('Error fetching total debt:', error.response ? error.response.data : error.message);
@@ -44,7 +44,7 @@ const Invoices = () => {
 
     const payInvoice = async (invoiceId) => {
         try {
-            await axiosInstance.post('http://localhost:8080/potato/api/transfers/viainvoice', {invoiceId});
+            await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/viainvoice', {invoiceId});
             setInvoices((prevInvoices) =>
                 prevInvoices.map((invoice) =>
                     invoice.id === invoiceId ? { ...invoice, invoiceStatus: 'PAID' } : invoice

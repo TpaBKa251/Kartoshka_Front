@@ -13,7 +13,7 @@ const Roulette = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.post(`http://localhost:8080/potato/api/transfers/roulette/${min}/${max}/${number}`, { amount });
+            const response = await axiosInstance.post(`https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/roulette/${min}/${max}/${number}`, { amount });
             setMessage(response.data.result);
         } catch (error) {
             setMessage('Ошибка при совершении ставки.');

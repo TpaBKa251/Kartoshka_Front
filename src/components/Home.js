@@ -49,7 +49,7 @@ const Home = () => {
         if (isAuthenticated) {
             const fetchWalletInfo = async () => {
                 try {
-                    const response = await axiosInstance.get('http://localhost:8080/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
                     setWalletInfo(response.data);
                 } catch (error) {
                     console.error('Failed to fetch wallet info:', error.response ? error.response.data : error.message);
@@ -58,7 +58,7 @@ const Home = () => {
 
             const fetchTransactions = async () => {
                 try {
-                    const response = await axiosInstance.get('http://localhost:8080/potato/api/transfers/getall');
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/getall');
                     if (response.data.length > 10) {
                         setTransactions(response.data.slice(response.data.length - 10, response.data.length));
                     }
@@ -72,7 +72,7 @@ const Home = () => {
 
             const fetchInvoices = async () => {
                 try {
-                    const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/getallincoming');
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/getallincoming');
                     if (response.data.length > 5) {
                         setInvoices(response.data.filter(invoice => invoice.invoiceStatus === 'UNPAID').slice(response.data.length - 5, response.data.length));
                     }
@@ -87,7 +87,7 @@ const Home = () => {
 
             const fetchProfile = async () => {
                 try {
-                    const response = await axiosInstance.get('http://localhost:8080/potato/api/users/profile'); // предполагается, что у вас есть соответствующий эндпоинт
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile'); // предполагается, что у вас есть соответствующий эндпоинт
                     setProfileData(response.data);
                 } catch (error) {
                     console.error('Error fetching profile data:', error.response ? error.response.data : error.message);
@@ -96,7 +96,7 @@ const Home = () => {
 
             const fetchTotalDebt = async () => {
                 try {
-                    const response = await axiosInstance.get('http://localhost:8080/potato/api/invoices/gettotal');
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/gettotal');
                     setTotalDebt(response.data);
                 } catch (error) {
                     console.error('Error fetching total debt:', error.response ? error.response.data : error.message);

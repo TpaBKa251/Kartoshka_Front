@@ -12,7 +12,7 @@ const TransactionHistory = () => {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const response = await axiosInstance.get('http://localhost:8080/potato/api/transfers/getall'); // предполагается, что у вас есть соответствующий эндпоинт
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/getall'); // предполагается, что у вас есть соответствующий эндпоинт
                 setTransactions(response.data);
                 setLoading(false);
             } catch (error) {

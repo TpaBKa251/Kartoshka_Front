@@ -13,10 +13,10 @@ const InvoiceDetails = () => {
     useEffect(() => {
         const fetchInvoiceDetails = async () => {
             try {
-                const response = await axiosInstance.get(`http://localhost:8080/potato/api/invoices/${id}`);
+                const response = await axiosInstance.get(`https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices/${id}`);
                 setInvoice(response.data);
 
-                const senderResponse = await axiosInstance.get(`http://localhost:8080/potato/api/users/${response.data.senderId}`);
+                const senderResponse = await axiosInstance.get(`https://shift-intensive-potato-wallet.onrender.com/potato/api/users/${response.data.senderId}`);
                 setSender(senderResponse.data);
             } catch (error) {
                 setError(error.response ? error.response.data : error.message);
@@ -30,7 +30,7 @@ const InvoiceDetails = () => {
 
     const handleConfirmPayment = async () => {
         try {
-            const response = await axiosInstance.post(`http://localhost:8080/potato/api/transfers/viainvoice`, {
+            const response = await axiosInstance.post(`https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/viainvoice`, {
                 invoiceId: id
             });
             setInvoice({ ...invoice, status: 'PAID' });
