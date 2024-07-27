@@ -1,4 +1,3 @@
-/* Удалите стили для .header-hero и .App-nav из Home.css, так как они уже есть в Header.css */
 
 .cta-button {
     background-color: rgba(94, 94, 94, 0);
@@ -150,22 +149,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px; /* Увеличить размер */
+    padding: 30px;
     /background-color: white;
     border-radius: 50px;
-    margin: 30px; /* Увеличить размер */
-    width: calc(100% - 60px); /* Увеличить размер */
+    margin: 30px;
+    width: calc(100% - 60px);
 }
 
 .balance-container h1 {
-    font-size: 2.5rem; /* Увеличить размер */
-    margin-bottom: 20px; /* Увеличить размер */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     color: black;
 }
 
 .balance-container p {
-    font-size: 3.5rem; /* Увеличить размер */
-    margin-bottom: 30px; /* Увеличить размер */
+    font-size: 3.5rem;
+    margin-bottom: 30px;
     color: black;
 }
 
@@ -228,18 +227,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px; /* Увеличить размер */
+    padding: 30px;
     background-color: rgba(198, 198, 198, 0.21);
     backdrop-filter: blur(20px);
     border-radius: 50px;
     box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.2);
-    margin: 30px; /* Увеличить размер */
-    width: calc(75% - 30px); /* Увеличить размер */
+    margin: 30px;
+    width: calc(75% - 30px);
 }
 
 .transaction-history h2, .invoice-container h2 {
-    font-size: 2rem; /* Увеличить размер */
-    margin-bottom: 20px; /* Увеличить размер */
+    font-size: 2rem;
+    margin-bottom: 20px;
     color: black;
     text-align: center;
 }
@@ -260,9 +259,9 @@
 .transaction-history li, .invoice-list li {
     display: flex;
     justify-content: space-between;
-    padding: 15px; /* Увеличить размер */
-    font-size: 1.5rem; /* Увеличить размер */
-    margin-bottom: 7.5px; /* Увеличить размер */
+    padding: 15px;
+    font-size: 1.5rem;
+    margin-bottom: 7.5px;
     border-bottom: 1px solid #ddd;
     color: black;
 }
@@ -276,7 +275,7 @@
 }
 
 .transaction-history span, .invoice-list span {
-    margin-right: 15px; /* Увеличить размер */
+    margin-right: 15px;
 }
 
 .pay-button {
@@ -303,10 +302,10 @@
     border-radius: 50px;
     /box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    height: 302px; /* Установите фиксированную высоту */
+    height: 302px;
     text-align: center;
     width: calc(50% - 20px);
-    align-self: flex-end; /* Выровнять вправо */
+    align-self: flex-end;
     background-size: cover;
     background-position: center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -339,15 +338,15 @@
 }
 
 .transfer-banner {
-    background-image: url('../assets/images/transfer.png'); /* Путь к изображению для перевода */
+    background-image: url('../assets/images/transfer.png');
 }
 
 .create-invoice-banner {
-    background-image: url('../assets/images/invoice.png'); /* Путь к изображению для создания счета */
+    background-image: url('../assets/images/invoice.png');
 }
 
 .topup-banner {
-    background-image: url('../assets/images/topup.png'); /* Путь к изображению для пополнения */
+    background-image: url('../assets/images/topup.png');
 }
 
 .main-container {

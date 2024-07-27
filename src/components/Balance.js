@@ -1,4 +1,3 @@
-// src/components/Balance.js
 
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../axiosConfig';
@@ -10,7 +9,7 @@ const Balance = () => {
     useEffect(() => {
         const fetchWalletInfo = async () => {
             try {
-                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet');
                 setWalletInfo(response.data);
             } catch (error) {
                 console.error('Failed to fetch wallet info:', error.response ? error.response.data : error.message);

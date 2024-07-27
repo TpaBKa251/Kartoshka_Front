@@ -1,4 +1,3 @@
-// src/components/TransactionHistory.js
 
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
@@ -12,7 +11,7 @@ const TransactionHistory = () => {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/getall'); // предполагается, что у вас есть соответствующий эндпоинт
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/getall');
                 setTransactions(response.data);
                 setLoading(false);
             } catch (error) {

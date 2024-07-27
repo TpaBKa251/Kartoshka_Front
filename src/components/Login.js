@@ -1,6 +1,3 @@
-// src/components/Login.js
-
-// src/components/Login.js
 
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -33,18 +30,16 @@ const Login = () => {
 
             const { token, sessionId } = response.data;
 
-            // Save the token and session ID to local storage
             localStorage.setItem('sessionToken', token);
             localStorage.setItem('sessionId', sessionId);
 
-            // Redirect to the homepage or another secure page
+            window.location.reload();
             navigate('/');
 
         } catch (error) {
             setError(error.response ? error.response.data : 'Login failed');
         }
 
-        window.location.reload();
     };
 
     return (

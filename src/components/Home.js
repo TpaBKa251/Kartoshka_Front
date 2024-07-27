@@ -8,13 +8,13 @@ import featureImage3 from '../assets/images/support.jpg';
 import logoImage from '../assets/images/potato.png';
 
 // Загрузите изображения для баннеров
-import bannerImage1 from '../assets/images/pay.jpg'; // Убедитесь, что путь к изображению верен
+import bannerImage1 from '../assets/images/pay.jpg';
 import bannerImage2 from '../assets/images/replenishment.jpg';
 
 import actionImage1 from '../assets/images/transfer.png';
 import actionImage2 from '../assets/images/invoice.png';
 import actionImage3 from '../assets/images/topup.png';
-import axiosInstance from "../axiosConfig"; // Убедитесь, что путь к изображению верен
+import axiosInstance from "../axiosConfig";
 
 const Home = () => {
     const isAuthenticated = !!localStorage.getItem('sessionToken');
@@ -49,7 +49,7 @@ const Home = () => {
         if (isAuthenticated) {
             const fetchWalletInfo = async () => {
                 try {
-                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet'); // Замените на ваш эндпоинт для получения информации о кошельке
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/wallet');
                     setWalletInfo(response.data);
                 } catch (error) {
                     console.error('Failed to fetch wallet info:', error.response ? error.response.data : error.message);
@@ -87,7 +87,7 @@ const Home = () => {
 
             const fetchProfile = async () => {
                 try {
-                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile'); // предполагается, что у вас есть соответствующий эндпоинт
+                    const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile');
                     setProfileData(response.data);
                 } catch (error) {
                     console.error('Error fetching profile data:', error.response ? error.response.data : error.message);

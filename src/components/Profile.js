@@ -1,4 +1,3 @@
-// src/components/Profile.js
 
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
@@ -12,7 +11,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile'); // предполагается, что у вас есть соответствующий эндпоинт
+                const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile');
                 setProfileData(response.data);
             } catch (error) {
                 console.error('Error fetching profile data:', error.response ? error.response.data : error.message);

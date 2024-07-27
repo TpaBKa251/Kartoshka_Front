@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './Header.css';
-import logoImage from '../assets/images/potato.png'; // Убедитесь, что путь к изображению верен
+import logoImage from '../assets/images/potato.png';
 
 const Header = () => {
     const isAuthenticated = !!localStorage.getItem('sessionToken');

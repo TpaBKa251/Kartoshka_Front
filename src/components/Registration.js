@@ -1,8 +1,8 @@
-// src/components/Registration.js
 
 import React, { useState } from 'react';
 import axiosInstance from '../axiosConfig';
 import './Registration.css';
+import {useNavigate} from "react-router-dom";
 
 const Registration = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +16,7 @@ const Registration = () => {
     });
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,9 +29,9 @@ const Registration = () => {
             console.log('Registration successful:', response.data);
             setError('');
             setMessage('Вы зарегистрированы!')
-            // Redirect or show a success message
+            navigate('/login')
         } catch (error) {
-            setError(error.response ? error.response.data : 'Регистраци провалена');
+            setError(error.response ? error.response.data : 'Регистраци провалена, сервер не отвечает. Попробуйте позже');
             setMessage('');
         }
     };

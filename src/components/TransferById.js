@@ -1,4 +1,3 @@
-// src/components/TransferById.js
 
 import React, { useState } from 'react';
 import axiosInstance from '../axiosConfig';

@@ -1,4 +1,3 @@
-// src/components/EditProfile.js
 
 import React, { useState } from 'react';
 import axiosInstance from '../axiosConfig';
@@ -23,7 +22,7 @@ const EditProfile = ({ onClose, profileData }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.patch('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/edit', formData); // предполагается, что у вас есть соответствующий эндпоинт
+            await axiosInstance.patch('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/edit', formData);
             alert('Профиль успешно обновлен');
             onClose();
         } catch (error) {

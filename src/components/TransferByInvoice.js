@@ -1,4 +1,3 @@
-// src/components/TransferByInvoice.js
 
 import React, { useState } from 'react';
 import axiosInstance from '../axiosConfig';
@@ -21,10 +20,10 @@ const TransferByInvoice = () => {
 
     return (
         <form className="transfer-form" onSubmit={handleSubmit}>
-            <h2>Перевод по ID инвойса</h2>
+            <h2>Перевод по ID счета на оплату</h2>
             <input
                 type="text"
-                placeholder="ID инвойса"
+                placeholder="ID счета"
                 value={invoiceId}
                 onChange={(e) => setInvoiceId(e.target.value)}
                 required

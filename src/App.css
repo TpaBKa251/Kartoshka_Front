@@ -201,7 +201,7 @@
   font-size: 1.8rem;
 }
 
-/* Появление info-section при прокрутке */
+
 .info-section.visible {
   opacity: 1;
   transform: translateY(0);
