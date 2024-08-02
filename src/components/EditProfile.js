@@ -27,6 +27,7 @@ const EditProfile = ({ onClose, profileData }) => {
             onClose();
         } catch (error) {
             console.error('Error updating profile:', error.response ? error.response.data : error.message);
+            alert(error.response ? error.response.data : 'Редактирование провалено, сервер не отвечает. Попробуйте позже')
         }
 
         window.location.reload();

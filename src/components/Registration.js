@@ -31,7 +31,7 @@ const Registration = () => {
             setMessage('Вы зарегистрированы!')
             navigate('/login')
         } catch (error) {
-            setError(error.response ? error.response.data : 'Регистраци провалена, сервер не отвечает. Попробуйте позже');
+            setError(error.response ? error.response.data : 'Регистрация провалена, сервер не отвечает. Попробуйте позже');
             setMessage('');
         }
     };
