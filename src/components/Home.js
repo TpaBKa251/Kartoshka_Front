@@ -121,7 +121,7 @@ const Home = () => {
     };
 
     if (walletInfo === null && isAuthenticated) {
-        return <p>Loading...</p>;
+        return <p align='center'>Загрузка...</p>;
     }
 
     const formatAmount = (amount, type, status) => {
