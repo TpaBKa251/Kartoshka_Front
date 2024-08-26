@@ -22,6 +22,8 @@
 
 .features {
     margin-top: 40px;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
 }
 
 .features h2 {
@@ -32,7 +34,7 @@
 
 .feature-cards {
     display: flex;
-    gap: 40px;
+    gap: 3.5%;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -47,7 +49,7 @@
     padding: 50px;
     padding-top: 100px;
     border-radius: 20px;
-    max-width: 495px;
+    max-width: 31%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 }
 
@@ -78,7 +80,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: #26a7fb;
-    max-width: 61.5%;
+    max-width: 75%;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -368,10 +370,15 @@
 /* Оптимизация для мобильных устройств */
 @media (max-width: 768px) {
     .cta-button {
-        font-size: 1rem;
+        font-size: 1.5rem;
         padding: 8px 15px;
         border-width: 2px;
         border-radius: 10px;
+    }
+
+    .features {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .features h2 {
@@ -498,7 +505,7 @@
 /* Дополнительная оптимизация для очень маленьких экранов */
 @media (max-width: 480px) {
     .cta-button, .banner-button {
-        font-size: 1rem;
+        font-size: 1.5rem;
         padding: 5px 10px;
         border-width: 1.5px;
         border-radius: 8px;

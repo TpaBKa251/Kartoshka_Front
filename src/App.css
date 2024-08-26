@@ -30,6 +30,9 @@
   box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 75%;
 }
 
 .header-hero-dub h1 {
@@ -88,7 +91,7 @@
 
 .feature-cards {
   display: flex;
-  gap: 40px;
+  gap: 10%;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
@@ -102,7 +105,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 495px;
+  max-width: 31%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -124,6 +127,8 @@
 
 .features {
   margin-top: 40px;
+  /margin-left: 20px;
+  /margin-right: 20px;
 }
 
 .features h2 {
@@ -158,6 +163,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
+  max-width: 75%;
 }
 
 .info-section {
@@ -293,6 +299,14 @@ footer {
   .header-hero-dub {
     padding: 20px;
     margin-top: 40px;
+    max-width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .features {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .header-hero-dub h1 {
@@ -306,7 +320,7 @@ footer {
 
   .header-hero-dub .cta-button {
     padding: 8px 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-radius: 10px;
   }
 
@@ -326,7 +340,8 @@ footer {
 
   .info-sections {
     padding: 50px;
-    margin: 20px 0;
+    margin: 20px;
+    max-width: 100%;
   }
 
   .info-section {
