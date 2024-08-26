@@ -75,3 +75,9 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+    .registration-container{
+        margin: 100px 20px;
+    }
+}
