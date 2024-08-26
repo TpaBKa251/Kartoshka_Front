@@ -27,7 +27,7 @@ const Header = () => {
             <div className="App-nav">
                 <Link to="/" className="logo">
                     <img src={logoImage} alt="Logo" className="logo-image"/>
-                    Картошка
+                    <span>Картошка</span>
                 </Link>
                 <div className="auth-links">
                     <Link to="/logout" className="cta-button-d">Выход</Link>
