@@ -23,14 +23,14 @@
 .header-hero-dub {
   background: rgba(87, 174, 255, 0.85);
   backdrop-filter: blur(10px);
-  padding: 30px 250px;
+  padding: 30px 10%;
   border-radius: 20px;
   display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
   margin: 80px 20px 0;
-  max-width: 75%;
+  max-width: 1230px; /*75%*/
 }
 
 .header-hero-dub h1 {
@@ -48,7 +48,7 @@
 .header-hero-dub .cta-button {
   background: #ffffff;
   color: #000000;
-  padding: 10px 20px;
+  /padding: 10px 20px;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -89,10 +89,11 @@
 
 .feature-cards {
   display: flex;
-  gap: 10%;
+  /gap: 10%;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
+  max-width: 1230px; /*75%*/
 }
 
 .feature-card {
@@ -103,7 +104,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 31%;
+  max-width: 390px; /*31%*/
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -150,7 +151,7 @@
   display: inline-block;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px 20px;
   padding: 100px;
   background: rgba(87, 174, 255, 0.85);
   backdrop-filter: blur(10px);
@@ -161,7 +162,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 75%;
+  max-width: 1230px; /*75%*/
 }
 
 .info-section {
@@ -293,11 +294,12 @@ footer {
 }
 
 /* Общие стили для мобильных устройств */
-@media (max-width: 768px) {
+@media (max-width: 940px) {
   .header-hero-dub {
-    padding: 20px;
+    padding: 20px 10%; /*20px*/
     margin-top: 40px;
     max-width: 100%;
+    /width: 100%;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -325,11 +327,13 @@ footer {
   .feature-cards {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
 
   .feature-card {
     padding: 30px;
     max-width: 100%;
+    width: 100%;
   }
 
   .features h2 {
