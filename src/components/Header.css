@@ -1,6 +1,8 @@
-.header-hero {
+/* Общие стили */
+
+.header-hero,
+.header-hero-d {
     background: rgba(87, 174, 255, 0.85);
-    backdrop-filter: blur(10px);
     padding: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -9,13 +11,19 @@
     animation: fadeIn 1.5s ease-in-out;
 }
 
-.header-hero .App-nav {
+.header-hero-d {
+    background: rgb(237, 237, 237);
+}
+
+.header-hero .App-nav,
+.header-hero-d .App-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header-hero .logo {
+.header-hero .logo,
+.header-hero-d .logo {
     display: flex;
     align-items: center;
     font-size: 2.5rem;
@@ -24,67 +32,31 @@
     text-decoration: none;
 }
 
-.header-hero .logo .logo-image {
-    width: 100px; /* Размер логотипа */
-    margin-right: 10px;
-}
-
-.header-hero .nav-links,
-.header-hero .auth-links {
-    display: flex;
-    gap: 20px;
-}
-
-.header-hero a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-
-
-
-
-.header-hero-d {
-    background: rgb(237, 237, 237);
-    padding: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
-    text-align: center;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-.header-hero-d .App-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .header-hero-d .logo {
-    display: flex;
-    align-items: center;
-    font-size: 2.5rem;
-    font-weight: bold;
     color: black;
-    text-decoration: none;
 }
 
+.header-hero .logo .logo-image,
 .header-hero-d .logo .logo-image {
     width: 100px;
     margin-right: 10px;
 }
 
-.header-hero-d .nav-links,
+.header-hero .auth-links,
 .header-hero-d .auth-links {
     display: flex;
     gap: 20px;
 }
 
+.header-hero a,
 .header-hero-d a {
-    color: black;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.2rem;
+}
+
+.header-hero-d a {
+    color: black;
 }
 
 .cta-button-d {
@@ -105,4 +77,25 @@
 .cta-button-d:hover {
     background-color: #686868;
     color: white;
+}
+
+/* Медиа-запросы для маленьких экранов */
+
+@media (max-width: 768px) {
+    /* Скрываем текстовое название сайта */
+    .header-hero .logo span,
+    .header-hero-d .logo span {
+        display: none;
+    }
+
+    /* Скрываем кнопку регистрации */
+    .header-hero .auth-links .cta-button:nth-child(2) {
+        display: none;
+    }
+
+    /* Логотип центрируется без текста */
+    .header-hero .logo,
+    .header-hero-d .logo {
+        justify-content: center;
+    }
 }

@@ -12,6 +12,7 @@
     margin-top: 10px;
     backdrop-filter: blur(20px);
     transition: background 0.3s;
+
 }
 
 .cta-button:hover {
@@ -21,6 +22,8 @@
 
 .features {
     margin-top: 40px;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
 }
 
 .features h2 {
@@ -31,7 +34,7 @@
 
 .feature-cards {
     display: flex;
-    gap: 40px;
+    gap: 3.5%;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -46,7 +49,7 @@
     padding: 50px;
     padding-top: 100px;
     border-radius: 20px;
-    max-width: 495px;
+    max-width: 31%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 }
 
@@ -77,7 +80,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: #26a7fb;
-    max-width: 61.5%;
+    max-width: 75%;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -362,6 +365,177 @@
 .greeting h1 {
     font-size: 4rem;
     padding: 150px;
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+    .cta-button {
+        font-size: 1.5rem;
+        padding: 8px 15px;
+        border-width: 2px;
+        border-radius: 10px;
+    }
+
+    .features {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .features h2 {
+        font-size: 1.8rem;
+    }
+
+    .feature-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 30px;
+        max-width: 100%;
+    }
+
+    .banner {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: 40px 0;
+        max-width: 90%;
+    }
+
+    .banner img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 15px;
+    }
+
+    .banner-content {
+        text-align: center;
+    }
+
+    .banner-content h3 {
+        font-size: 2rem;
+    }
+
+    .banner-content p {
+        font-size: 1.2rem;
+    }
+
+    .banner-button {
+        font-size: 1.5rem;
+        padding: 8px 15px;
+        border-width: 2px;
+        border-radius: 10px;
+    }
+
+    .main-container {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    .balance-container {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .balance-container h1 {
+        font-size: 2rem;
+    }
+
+    .balance-container p {
+        font-size: 2.5rem;
+    }
+
+    .balance-button, .wallet-button, .view-all-button,
+    .topup-button, .create-invoice-button, .transfer-button {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+        border-width: 2px;
+        border-radius: 10px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .transaction-history, .invoice-container {
+        padding: 20px;
+        margin: 20px 0;
+        width: 100%;
+    }
+
+    .transaction-history h2, .invoice-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .transaction-history li, .invoice-list li {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .transfer-banner, .create-invoice-banner, .topup-banner {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        margin: 10px 0;
+        text-align: center;
+        align-items: center;
+        transition: none;
+        box-shadow: none;
+    }
+
+    .transfer-banner h2, .create-invoice-banner h2, .topup-banner h2 {
+        font-size: 1.5rem;
+    }
+
+    .greeting h1 {
+        font-size: 2.5rem;
+        padding: 50px;
+    }
+}
+
+/* Дополнительная оптимизация для очень маленьких экранов */
+@media (max-width: 480px) {
+    .cta-button, .banner-button {
+        font-size: 1.5rem;
+        padding: 5px 10px;
+        border-width: 1.5px;
+        border-radius: 8px;
+    }
+
+    .banner-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .banner-content p {
+        font-size: 1rem;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+
+    .transaction-history li, .invoice-list li {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    .transfer-banner h2, .create-invoice-banner h2, .topup-banner h2 {
+        font-size: 1.2rem;
+    }
+
+    .greeting h1 {
+        font-size: 2rem;
+        padding: 30px;
+    }
 }
 
 

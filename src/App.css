@@ -3,6 +3,7 @@
   text-align: center;
   min-height: 100vh;
   display: flex;
+  height: auto;
   flex-direction: column;
   background: linear-gradient(135deg, #02023a, #0b0b6e, #053f7c);
   color: white;
@@ -24,11 +25,12 @@
   backdrop-filter: blur(10px);
   padding: 30px 250px;
   border-radius: 20px;
-  margin-top: 80px;
   display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
+  margin: 80px 20px 0;
+  max-width: 75%;
 }
 
 .header-hero-dub h1 {
@@ -54,10 +56,17 @@
 }
 
 
-.App-nav {
+.app-nav {
   display: flex;
-  justify-content: space-between;
+  /flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+  justify-content: center; /* Центрирует элементы в контейнере */
   align-items: center;
+  overflow: hidden; /* Скрывает содержимое, выходящее за пределы контейнера */
+  width: 100%; /* Устанавливает контейнер на всю ширину экрана */
+  padding: 10px 20px;
+  max-width: 100%;
+  box-sizing: border-box; /* Учитывает отступы при вычислении ширины */
+
 }
 
 .App-nav .logo {
@@ -80,7 +89,7 @@
 
 .feature-cards {
   display: flex;
-  gap: 40px;
+  gap: 10%;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
@@ -94,7 +103,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 495px;
+  max-width: 31%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -116,6 +125,8 @@
 
 .features {
   margin-top: 40px;
+  /margin-left: 20px;
+  /margin-right: 20px;
 }
 
 .features h2 {
@@ -150,6 +161,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
+  max-width: 75%;
 }
 
 .info-section {
@@ -279,3 +291,130 @@ footer {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
+
+/* Общие стили для мобильных устройств */
+@media (max-width: 768px) {
+  .header-hero-dub {
+    padding: 20px;
+    margin-top: 40px;
+    max-width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .features {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .header-hero-dub h1 {
+    font-size: 2rem;
+  }
+
+  .header-hero-dub p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .header-hero-dub .cta-button {
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .feature-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .features h2 {
+    font-size: 2rem;
+  }
+
+  .info-sections {
+    padding: 50px;
+    margin: 20px;
+    max-width: 100%;
+  }
+
+  .info-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-section img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px 0;
+  }
+
+  .info-section .text h3 {
+    font-size: 2rem;
+  }
+
+  .info-section .text p {
+    font-size: 1.2rem;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  .footer-container {
+    padding: 0 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-logo img {
+    height: 25px;
+  }
+
+  .footer-social img {
+    height: 25px;
+  }
+}
+
+/* Дополнительная оптимизация для очень маленьких экранов */
+@media (max-width: 480px) {
+  .header-hero-dub h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-hero-dub p {
+    font-size: 1rem;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .info-sections {
+    padding: 20px;
+  }
+
+  .info-section .text h3 {
+    font-size: 1.8rem;
+  }
+
+  .info-section .text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-nav {
+    flex-direction: column; /* Переводит кнопки в вертикальный стек */
+    align-items: stretch; /* Растягивает кнопки на всю ширину */
+  }
+
+}
+

@@ -8,10 +8,28 @@ const Login = () => {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [randomText, setRandomText] = useState('');
     const navigate = useNavigate();
+
+    const messages = [
+        'Копаем картошку...',
+        'Пожалуйста, подождите...',
+        'Вспахиваем поле...',
+        'Окучиваем картошку...',
+        'Заводим трактор...',
+        'Ищем место для посева...'
+    ];
+
+    const getRandomMessage = () => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setRandomText(getRandomMessage());
         try {
             let response;
             const isEmail = identifier.includes('@');
@@ -33,11 +51,13 @@ const Login = () => {
             localStorage.setItem('sessionToken', token);
             localStorage.setItem('sessionId', sessionId);
 
-            window.location.reload();
             navigate('/');
+            window.location.reload();
 
         } catch (error) {
-            setError(error.response ? error.response.data : 'Login failed');
+            setError(error.response ? error.response.data : 'Сервер не отвечает, попробуйте позже');
+        } finally {
+            setLoading(false);
         }
 
     };
@@ -60,7 +80,15 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Войти</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? (
+                        <>
+                            <span className="spinner"></span> {randomText}
+                        </>
+                    ) : (
+                        'Войти'
+                    )}
+                </button>
                 {error && <p className="error">{error}</p>}
             </form>
         </div>
