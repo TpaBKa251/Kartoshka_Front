@@ -25,6 +25,22 @@ const Home = () => {
     const [error, setError] = useState(null);
     const [totalDebt, setTotalDebt] = useState(null);
     const [profileData, setProfileData] = useState(null);
+    const [randomText, setRandomText] = useState('');
+
+    const messages = [
+        'Копаем картошку...',
+        'Пожалуйста, подождите...',
+        'Вспахиваем поле...',
+        'Окучиваем картошку...',
+        'Заводим трактор...',
+        'Загружаем картошку...',
+        'Ищем место для посева...'
+    ];
+
+    const getRandomMessage = () => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -104,6 +120,7 @@ const Home = () => {
             };
 
 
+            setRandomText(getRandomMessage());
             fetchWalletInfo();
             fetchTransactions();
             fetchInvoices();
@@ -121,7 +138,7 @@ const Home = () => {
     };
 
     if (walletInfo === null && isAuthenticated) {
-        return <p align='center'>Загрузка...</p>;
+        return <div align="center"><span className="spinner"></span> <p style={{fontSize: "1.3rem"}}>{randomText}</p></div>;
     }
 
     const formatAmount = (amount, type, status) => {

@@ -371,6 +371,24 @@
     padding: 150px;
 }
 
+.spinner {
+    margin-top: 20px;
+    border: 17px solid rgba(158, 158, 158, 0.85); /* Основной цвет фона кольца */
+    border-radius: 50%; /* Сделать элемент круглым */
+    border-top: 17px solid #000000; /* Цвет верхней части кольца */
+    width: 100px; /* Ширина кольца */
+    height: 100px; /* Высота кольца */
+    animation: spin 1s linear infinite; /* Анимация вращения */
+    margin-right: 10px; /* Отступ справа от текста */
+    display: inline-block; /* Чтобы элементы выстраивались в ряд */
+    align-items: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Оптимизация для мобильных устройств */
 @media (max-width: 940px) {
     .cta-button {
