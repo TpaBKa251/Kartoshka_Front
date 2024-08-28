@@ -15,7 +15,7 @@ const TransactionHistory = () => {
                 setTransactions(response.data);
                 setLoading(false);
             } catch (error) {
-                setError(error.response ? error.response.data : error.message);
+                setError(error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
                 setLoading(false);
             }
 

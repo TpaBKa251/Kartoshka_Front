@@ -9,6 +9,21 @@ const InvoiceDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sender, setSender] = useState(null);
+    const [randomText, setRandomText] = useState('');
+    const messages = [
+        'Копаем картошку...',
+        'Пожалуйста, подождите...',
+        'Вспахиваем поле...',
+        'Окучиваем картошку...',
+        'Заводим трактор...',
+        'Загружаем картошку...',
+        'Ищем место для посева...'
+    ];
+
+    const getRandomMessage = () => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    };
 
     useEffect(() => {
         const fetchInvoiceDetails = async () => {
@@ -19,12 +34,13 @@ const InvoiceDetails = () => {
                 const senderResponse = await axiosInstance.get(`https://shift-intensive-potato-wallet.onrender.com/potato/api/users/${response.data.senderId}`);
                 setSender(senderResponse.data);
             } catch (error) {
-                setError(error.response ? error.response.data : error.message);
+                setError(error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
             } finally {
                 setLoading(false);
             }
         };
 
+        setRandomText(getRandomMessage);
         fetchInvoiceDetails();
     }, [id]);
 
@@ -34,8 +50,10 @@ const InvoiceDetails = () => {
                 invoiceId: id
             });
             setInvoice({ ...invoice, status: 'PAID' });
-            console.log('Payment response:', response.data); // Debugging line
-            alert("Счет оплачен")
+            console.log('Payment response:', response.data);
+            alert("Счет оплачен");
+            setError('');
+            window.location.reload();
         } catch (error) {
             console.error('Failed to confirm payment:', error.response ? error.response.data : error.message);
             setError(error.response ? error.response.data : error.message);
@@ -43,7 +61,8 @@ const InvoiceDetails = () => {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <div align="center"><span className="spinner-page"></span> <p
+            style={{fontSize: "1.3rem"}}>{randomText}</p></div>;
     }
 
 

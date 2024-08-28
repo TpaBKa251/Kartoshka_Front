@@ -50,7 +50,7 @@ function App() {
                 </main>
               </div>
           ) : (
-              <div className="app-d">
+              <div className="App-d">
                 <Header/>
                 <main>
                   <Routes>

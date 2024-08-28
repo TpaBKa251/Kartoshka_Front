@@ -81,7 +81,7 @@
 
 /* Медиа-запросы для маленьких экранов */
 
-@media (max-width: 768px) {
+@media (max-width: 940px) {
     /* Скрываем текстовое название сайта */
     .header-hero .logo span,
     .header-hero-d .logo span {
@@ -97,5 +97,9 @@
     .header-hero .logo,
     .header-hero-d .logo {
         justify-content: center;
+    }
+
+    .header-hero-d {
+        display: none;
     }
 }

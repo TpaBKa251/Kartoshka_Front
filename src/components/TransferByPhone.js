@@ -13,10 +13,11 @@ const TransferByPhone = () => {
         try {
             await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/viaphone', { recipientPhone: phone, amount });
             alert('Перевод успешно выполнен');
+            window.location.reload();
             setError('');
         } catch (error) {
             console.error('Transfer failed:', error.response ? error.response.data : error.message);
-            setError(error.response ? error.response.data : 'Перевод не выполнен');
+            setError(error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
         }
     };
 

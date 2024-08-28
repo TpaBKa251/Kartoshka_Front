@@ -7,6 +7,21 @@ import './Profile.css';
 const Profile = () => {
     const [profileData, setProfileData] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [randomText, setRandomText] = useState('');
+    const messages = [
+        'Копаем картошку...',
+        'Пожалуйста, подождите...',
+        'Вспахиваем поле...',
+        'Окучиваем картошку...',
+        'Заводим трактор...',
+        'Загружаем картошку...',
+        'Ищем место для посева...'
+    ];
+
+    const getRandomMessage = () => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    };
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -14,10 +29,11 @@ const Profile = () => {
                 const response = await axiosInstance.get('https://shift-intensive-potato-wallet.onrender.com/potato/api/users/profile');
                 setProfileData(response.data);
             } catch (error) {
-                console.error('Error fetching profile data:', error.response ? error.response.data : error.message);
+                console.error('Error fetching profile data:', error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
             }
         };
 
+        setRandomText(getRandomMessage)
         fetchProfile();
     }, []);
 
@@ -48,7 +64,8 @@ const Profile = () => {
                     <button onClick={handleEditClick}>Редактировать профиль</button>
                 </div>
             ) : (
-                <p>Загрузка профиля...</p>
+                <div align="center"><span className="spinner-page"></span> <p
+                    style={{fontSize: "1.3rem"}}>{randomText}</p></div>
             )}
             {showEditModal && <EditProfile onClose={handleEditClose} profileData={profileData} />}
         </div>
