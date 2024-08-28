@@ -52,7 +52,7 @@
     padding: 50px;
     padding-top: 100px;
     border-radius: 20px;
-    max-width: 450px; /*31%*/
+    max-width: 500px; /*31%*/
     width: 31%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 }
@@ -84,7 +84,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: #26a7fb;
-    max-width: 1230px;
+    max-width: 1500px;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -141,17 +141,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 96%;
+    /width: 96%;
+    max-width: 1500px;
     padding: 20px;
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, 0);
     border-radius: 50px;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    margin: 50px 50px 700px;
+    margin: 20px auto 700px auto;
 }
 
-/* Остальные стили */
 .balance-container {
     display: flex;
     flex-direction: column;
@@ -160,6 +160,7 @@
     /background-color: white;
     border-radius: 50px;
     margin: 30px;
+    margin-top: 20px;
     width: calc(100% - 60px);
 }
 
@@ -223,11 +224,18 @@
     width: 100%;
 }
 
-.left-column, .right-column {
+.left-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 48%;
+    width: 60%;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
 }
 
 .transaction-history, .invoice-container {
@@ -240,7 +248,8 @@
     border-radius: 50px;
     box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.2);
     margin: 30px;
-    width: calc(75% - 30px);
+    width: 100%;
+    /width: calc(50% - 60px);
 }
 
 .transaction-history h2, .invoice-container h2 {
@@ -309,9 +318,10 @@
     border-radius: 50px;
     /box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    height: 302px;
+    max-height: 500px;
+    min-height: 305px;
     text-align: center;
-    width: calc(50% - 20px);
+    width: 100%;
     align-self: flex-end;
     background-size: cover;
     background-position: center;
@@ -341,7 +351,7 @@
 }
 
 .transfer-banner.small, .create-invoice-banner.small, .topup-banner.small {
-    width: calc(50% - 20px);
+    width: calc(100% - 50px);
 }
 
 .transfer-banner {
@@ -356,7 +366,11 @@
     background-image: url('../assets/images/topup.png');
 }
 
-.main-container {
+/*.main-container {*/
+/*    background-image: url('../assets/images/back2.jpg');*/
+/*}*/
+
+.balance-container {
     background-image: url('../assets/images/back2.jpg');
 }
 
@@ -371,7 +385,7 @@
     padding: 150px;
 }
 
-.spinner {
+.spinner-page {
     margin-top: 20px;
     border: 17px solid rgba(158, 158, 158, 0.85); /* Основной цвет фона кольца */
     border-radius: 50%; /* Сделать элемент круглым */
@@ -560,6 +574,76 @@
         padding: 30px;
     }
 }
+
+.desktop {
+    display: block;
+}
+.mobile {
+    display: none;
+}
+
+@media (max-width: 940px) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    .main-container {
+        flex-direction: column;
+        margin: 10px 10px 100px; /* Уменьшение отступов для мобильных */
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .transaction-history, .invoice-container, .balance-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    footer {
+        margin-top: 20px;
+    }
+
+    .profile-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        max-width: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background-color: #fff;
+        padding: 10px 0;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .bottom-nav button {
+        flex: 1;
+        font-size: 1rem;
+        padding: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+
 
 
 

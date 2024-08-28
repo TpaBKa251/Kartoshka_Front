@@ -1,0 +1,44 @@
+.switch-container {
+    position: relative;
+    display: flex;
+    width: 350px; /* Ширина переключателя */
+    background-color: #f0f0f0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #686868;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-style: normal;
+}
+
+.switch-option {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    color: #2b2b2b;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.switch-option.active {
+    color: #fff; /* Цвет текста активной вкладки */
+}
+
+.switch-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%; /* Ширина ползунка */
+    background-color: #0081EAFF; /* Цвет выделения */
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.switch-slider.transactions {
+    transform: translateX(0%);
+}
+
+.switch-slider.invoices {
+    transform: translateX(100%);
+}

@@ -15,22 +15,23 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #c3c3c3, #e1e1e1, #ffffff);
-  color: white;
+  height: auto;
+  background: linear-gradient(135deg, #e3e3e3, #f1f1f1, #ffffff);
+  color: black;
   font-family: 'Arial', sans-serif;
 }
 
 .header-hero-dub {
   background: rgba(87, 174, 255, 0.85);
   backdrop-filter: blur(10px);
-  padding: 30px 10%;
+  padding: 30px 15%;
   border-radius: 20px;
   display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.53) 0px 10px 50px;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
   margin: 80px 20px 0;
-  max-width: 1230px; /*75%*/
+  max-width: 1500px; /*75%*/
 }
 
 .header-hero-dub h1 {
@@ -93,7 +94,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
-  max-width: 1230px; /*75%*/
+  max-width: 1500px; /*75%*/
 }
 
 .feature-card {
@@ -104,7 +105,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 390px; /*31%*/
+  max-width: 500px; /*31%*/
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -162,7 +163,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: #26a7fb;
-  max-width: 1230px; /*75%*/
+  max-width: 1500px; /*75%*/
 }
 
 .info-section {
@@ -227,7 +228,7 @@ footer {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
