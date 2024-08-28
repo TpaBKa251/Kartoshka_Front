@@ -13,7 +13,7 @@ const TopUp = () => {
             const response = await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/transfers/hesoyam', { amount });
             setMessage(response.data.result);
         } catch (error) {
-            setMessage('Ошибка при пополнении.');
+            setMessage(error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
         }
     };
 

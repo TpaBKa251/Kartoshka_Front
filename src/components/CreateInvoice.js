@@ -15,9 +15,11 @@ const CreateInvoice = () => {
         e.preventDefault();
         try {
             await axiosInstance.post('https://shift-intensive-potato-wallet.onrender.com/potato/api/invoices', { recipientId, amount, comment });
-            navigate('/');
+            alert('Счет на оплату успешно создан');
+            setError('');
+            window.location.reload();
         } catch (error) {
-            setError(error.response ? error.response.data : error.message);
+            setError(error.response ? error.response.data : 'Сервер не отвечает. Попробуйте позже');
         }
     };
 

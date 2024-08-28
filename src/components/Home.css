@@ -157,7 +157,9 @@
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    /background-color: white;
+    box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.2);
+    background-color: rgba(198, 198, 198, 0.21);
+    backdrop-filter: blur(20px);
     border-radius: 50px;
     margin: 30px;
     margin-top: 20px;
@@ -370,9 +372,6 @@
 /*    background-image: url('../assets/images/back2.jpg');*/
 /*}*/
 
-.balance-container {
-    background-image: url('../assets/images/back2.jpg');
-}
 
 .greeting {
     display: flex;

@@ -5,6 +5,21 @@ import './Balance.css';
 
 const Balance = () => {
     const [walletInfo, setWalletInfo] = useState(null);
+    const [randomText, setRandomText] = useState('');
+    const messages = [
+        'Копаем картошку...',
+        'Пожалуйста, подождите...',
+        'Вспахиваем поле...',
+        'Окучиваем картошку...',
+        'Заводим трактор...',
+        'Загружаем картошку...',
+        'Ищем место для посева...'
+    ];
+
+    const getRandomMessage = () => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    };
 
     useEffect(() => {
         const fetchWalletInfo = async () => {
@@ -16,11 +31,13 @@ const Balance = () => {
             }
         };
 
+        setRandomText(getRandomMessage());
         fetchWalletInfo();
     }, []);
 
     if (walletInfo === null) {
-        return <p>Loading...</p>;
+        return <div align="center"><span className="spinner-page"></span> <p
+            style={{fontSize: "1.3rem"}}>{randomText}</p></div>;
     }
 
     return (
